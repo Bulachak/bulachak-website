@@ -1,0 +1,15 @@
+// @polsia:user-owned — athlete lead intake. App-owned schema file alongside
+// framework-owned `_base.prisma`; do not redeclare datasource/generator.
+
+model AthleteLead {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  sport           String
+  transitionStage String   @map("transition_stage")
+  targetVenture   String?  @map("target_venture") @db.Text
+  createdAt       DateTime @default(now())
+
+  @@index([email])
+  @@map("athlete_leads")
+}

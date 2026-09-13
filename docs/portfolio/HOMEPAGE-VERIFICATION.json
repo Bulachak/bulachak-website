@@ -1,0 +1,636 @@
+{
+  "checkedAt": "2026-09-12T19:13:35.190309+00:00",
+  "environment": "DEV",
+  "server": "http://127.0.0.1:3000",
+  "scope": "Focused HTTP checks only: home, work and founder identity in EN/RU/TT; home/work/default Markdown; sitemap and llms. No browser operations, no full 99-route repeat and no production CSP certification.",
+  "html": [
+    {
+      "path": "/portfolio",
+      "status": 200,
+      "language": "en",
+      "h1": "A future we build together",
+      "title": "A future we build together · Bulachak",
+      "description": "Bulachak means \"the future\" in Tatar. It connects three initiatives in sport, adaptive fencing, and immigrant communities through a shared philosophy.",
+      "canonical": ["http://localhost:3000/portfolio"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio",
+        "ru": "http://localhost:3000/ru/portfolio",
+        "tt": "http://localhost:3000/tt/portfolio",
+        "x-default": "http://localhost:3000/portfolio"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=en"],
+      "jsonLdTypes": ["Organization", "WebSite", "WebPage"],
+      "pageType": "WebPage",
+      "identity": {
+        "allSharedHomeCopyPresent": true,
+        "personNodeCount": 0,
+        "organizationMainEntity": {
+          "@id": "http://localhost:3000/portfolio#bulachak"
+        },
+        "branchCount": 3,
+        "ogImage": "http://localhost:3000/opengraph-image"
+      },
+      "mainLang": "en",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/portfolio/work",
+      "status": 200,
+      "language": "en",
+      "h1": "Experience behind Bulachak.",
+      "title": "Experience behind Bulachak. · Bulachak",
+      "description": "Projects by Bulachak founder Kamilla Gafurzianova. Each case explains her role, the work’s status, and the evidence available.",
+      "canonical": ["http://localhost:3000/portfolio/work"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio/work",
+        "ru": "http://localhost:3000/ru/portfolio/work",
+        "tt": "http://localhost:3000/tt/portfolio/work",
+        "x-default": "http://localhost:3000/portfolio/work"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=en&slug=work"],
+      "jsonLdTypes": ["Person", "Organization", "WebSite", "CollectionPage"],
+      "pageType": "CollectionPage",
+      "identity": {
+        "caseCount": 24,
+        "allCasesAttributedToFounder": true,
+        "author": "Kamilla Gafurzianova",
+        "initialListPolicy": "Source intentionally starts with 8 rows plus selected projects. This pass verified the full 24-case list in JSON-LD and Markdown. Requiring all 24 case titles visible in the initial directory would be an incorrect audit expectation."
+      },
+      "mainLang": "en",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/portfolio/founder",
+      "status": 200,
+      "language": "en",
+      "h1": "Kamilla Gafurzianova, OLY",
+      "title": "Kamilla Gafurzianova, OLY · Bulachak",
+      "description": "Olympic silver medalist in fencing, coach, and systems builder; founder of Bulachak.",
+      "canonical": ["http://localhost:3000/portfolio/founder"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio/founder",
+        "ru": "http://localhost:3000/ru/portfolio/founder",
+        "tt": "http://localhost:3000/tt/portfolio/founder",
+        "x-default": "http://localhost:3000/portfolio/founder"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=en&slug=founder"],
+      "jsonLdTypes": ["Person", "Organization", "WebSite", "ProfilePage"],
+      "pageType": "ProfilePage",
+      "identity": {
+        "personName": "Kamilla Gafurzianova",
+        "mainEntity": {
+          "@id": "http://localhost:3000/portfolio/founder#person"
+        }
+      },
+      "mainLang": "en",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/ru/portfolio",
+      "status": 200,
+      "language": "ru",
+      "h1": "Будущее, которое мы строим вместе",
+      "title": "Будущее, которое мы строим вместе · Bulachak",
+      "description": "Bulachak означает «будущее» на татарском. Он объединяет три инициативы в спорте, адаптивном фехтовании и сообществах иммигрантов общей философией.",
+      "canonical": ["http://localhost:3000/ru/portfolio"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio",
+        "ru": "http://localhost:3000/ru/portfolio",
+        "tt": "http://localhost:3000/tt/portfolio",
+        "x-default": "http://localhost:3000/portfolio"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=ru"],
+      "jsonLdTypes": ["Organization", "WebSite", "WebPage"],
+      "pageType": "WebPage",
+      "identity": {
+        "allSharedHomeCopyPresent": true,
+        "personNodeCount": 0,
+        "organizationMainEntity": {
+          "@id": "http://localhost:3000/portfolio#bulachak"
+        },
+        "branchCount": 3,
+        "ogImage": "http://localhost:3000/opengraph-image"
+      },
+      "mainLang": "ru",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/ru/portfolio/work",
+      "status": 200,
+      "language": "ru",
+      "h1": "Опыт, на котором строится Bulachak.",
+      "title": "Опыт, на котором строится Bulachak. · Bulachak",
+      "description": "Проекты основательницы Bulachak Камиллы Гафурзяновой. В каждом кейсе указаны её роль, статус работы и доступные подтверждения.",
+      "canonical": ["http://localhost:3000/ru/portfolio/work"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio/work",
+        "ru": "http://localhost:3000/ru/portfolio/work",
+        "tt": "http://localhost:3000/tt/portfolio/work",
+        "x-default": "http://localhost:3000/portfolio/work"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=ru&slug=work"],
+      "jsonLdTypes": ["Person", "Organization", "WebSite", "CollectionPage"],
+      "pageType": "CollectionPage",
+      "identity": {
+        "caseCount": 24,
+        "allCasesAttributedToFounder": true,
+        "author": "Kamilla Gafurzianova",
+        "initialListPolicy": "Source intentionally starts with 8 rows plus selected projects. This pass verified the full 24-case list in JSON-LD and Markdown. Requiring all 24 case titles visible in the initial directory would be an incorrect audit expectation."
+      },
+      "mainLang": "ru",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/ru/portfolio/founder",
+      "status": 200,
+      "language": "ru",
+      "h1": "Камилла Гафурзянова, OLY",
+      "title": "Камилла Гафурзянова, OLY · Bulachak",
+      "description": "Серебряный призёр Олимпийских игр по фехтованию, тренер, разработчик рабочих систем и основательница Bulachak.",
+      "canonical": ["http://localhost:3000/ru/portfolio/founder"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio/founder",
+        "ru": "http://localhost:3000/ru/portfolio/founder",
+        "tt": "http://localhost:3000/tt/portfolio/founder",
+        "x-default": "http://localhost:3000/portfolio/founder"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=ru&slug=founder"],
+      "jsonLdTypes": ["Person", "Organization", "WebSite", "ProfilePage"],
+      "pageType": "ProfilePage",
+      "identity": {
+        "personName": "Kamilla Gafurzianova",
+        "mainEntity": {
+          "@id": "http://localhost:3000/portfolio/founder#person"
+        }
+      },
+      "mainLang": "ru",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/tt/portfolio",
+      "status": 200,
+      "language": "tt",
+      "h1": "Бергә төзи торган киләчәк",
+      "title": "Бергә төзи торган киләчәк · Bulachak",
+      "description": "Bulachak татарча «киләчәк» дигәнне аңлата. Ул спорт, адаптив фехтование һәм иммигрантлар берләшмәләре белән бәйле өч инициативаны уртак фәлсәфә аша берләштерә.",
+      "canonical": ["http://localhost:3000/tt/portfolio"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio",
+        "ru": "http://localhost:3000/ru/portfolio",
+        "tt": "http://localhost:3000/tt/portfolio",
+        "x-default": "http://localhost:3000/portfolio"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=tt"],
+      "jsonLdTypes": ["Organization", "WebSite", "WebPage"],
+      "pageType": "WebPage",
+      "identity": {
+        "allSharedHomeCopyPresent": true,
+        "personNodeCount": 0,
+        "organizationMainEntity": {
+          "@id": "http://localhost:3000/portfolio#bulachak"
+        },
+        "branchCount": 3,
+        "ogImage": "http://localhost:3000/opengraph-image"
+      },
+      "mainLang": "tt",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/tt/portfolio/work",
+      "status": 200,
+      "language": "tt",
+      "h1": "Bulachak нигезендәге тәҗрибә.",
+      "title": "Bulachak нигезендәге тәҗрибә. · Bulachak",
+      "description": "Bulachakка нигез салучы Камилла Гафурҗанованың проектлары. Һәр эш мисалында аның роле, эшнең хәле һәм булган дәлилләр аңлатыла.",
+      "canonical": ["http://localhost:3000/tt/portfolio/work"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio/work",
+        "ru": "http://localhost:3000/ru/portfolio/work",
+        "tt": "http://localhost:3000/tt/portfolio/work",
+        "x-default": "http://localhost:3000/portfolio/work"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=tt&slug=work"],
+      "jsonLdTypes": ["Person", "Organization", "WebSite", "CollectionPage"],
+      "pageType": "CollectionPage",
+      "identity": {
+        "caseCount": 24,
+        "allCasesAttributedToFounder": true,
+        "author": "Kamilla Gafurzianova",
+        "initialListPolicy": "Source intentionally starts with 8 rows plus selected projects. This pass verified the full 24-case list in JSON-LD and Markdown. Requiring all 24 case titles visible in the initial directory would be an incorrect audit expectation."
+      },
+      "mainLang": "tt",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    },
+    {
+      "path": "/tt/portfolio/founder",
+      "status": 200,
+      "language": "tt",
+      "h1": "Камилла Гафурзянова, OLY",
+      "title": "Камилла Гафурзянова, OLY · Bulachak",
+      "description": "Фехтование буенча Олимпия уеннарының көмеш медаль иясе, тренер, эш системалары төзүче һәм Bulachakка нигез салучы.",
+      "canonical": ["http://localhost:3000/tt/portfolio/founder"],
+      "hreflang": {
+        "en": "http://localhost:3000/portfolio/founder",
+        "ru": "http://localhost:3000/ru/portfolio/founder",
+        "tt": "http://localhost:3000/tt/portfolio/founder",
+        "x-default": "http://localhost:3000/portfolio/founder"
+      },
+      "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=tt&slug=founder"],
+      "jsonLdTypes": ["Person", "Organization", "WebSite", "ProfilePage"],
+      "pageType": "ProfilePage",
+      "identity": {
+        "personName": "Kamilla Gafurzianova",
+        "mainEntity": {
+          "@id": "http://localhost:3000/portfolio/founder#person"
+        }
+      },
+      "mainLang": "tt",
+      "cspObservation": {
+        "present": true,
+        "noncePresent": true,
+        "nonceUsedByHTML": true,
+        "unsafeEvalPresent": true,
+        "assessment": "Observed on DEV only; no strict production assertion."
+      }
+    }
+  ],
+  "markdown": [
+    {
+      "path": "/portfolio/content.md?lang=en&slug=home",
+      "status": 200,
+      "language": "en",
+      "contentLanguage": "en",
+      "canonicalLink": "<http://localhost:3000/portfolio>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": true,
+      "caseTitlesPresent": 0,
+      "characters": 1551
+    },
+    {
+      "path": "/portfolio/content.md?lang=en&slug=work",
+      "status": 200,
+      "language": "en",
+      "contentLanguage": "en",
+      "canonicalLink": "<http://localhost:3000/portfolio/work>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": false,
+      "caseTitlesPresent": 24,
+      "characters": 49051
+    },
+    {
+      "path": "/portfolio/content.md?lang=en",
+      "status": 200,
+      "language": "en",
+      "contentLanguage": "en",
+      "canonicalLink": "<http://localhost:3000/portfolio>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": true,
+      "caseTitlesPresent": 24,
+      "characters": 64477
+    },
+    {
+      "path": "/portfolio/content.md?lang=ru&slug=home",
+      "status": 200,
+      "language": "ru",
+      "contentLanguage": "ru",
+      "canonicalLink": "<http://localhost:3000/ru/portfolio>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": true,
+      "caseTitlesPresent": 0,
+      "characters": 1632
+    },
+    {
+      "path": "/portfolio/content.md?lang=ru&slug=work",
+      "status": 200,
+      "language": "ru",
+      "contentLanguage": "ru",
+      "canonicalLink": "<http://localhost:3000/ru/portfolio/work>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": false,
+      "caseTitlesPresent": 24,
+      "characters": 51419
+    },
+    {
+      "path": "/portfolio/content.md?lang=ru",
+      "status": 200,
+      "language": "ru",
+      "contentLanguage": "ru",
+      "canonicalLink": "<http://localhost:3000/ru/portfolio>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": true,
+      "caseTitlesPresent": 24,
+      "characters": 67656
+    },
+    {
+      "path": "/portfolio/content.md?lang=tt&slug=home",
+      "status": 200,
+      "language": "tt",
+      "contentLanguage": "tt",
+      "canonicalLink": "<http://localhost:3000/tt/portfolio>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": true,
+      "caseTitlesPresent": 0,
+      "characters": 1663
+    },
+    {
+      "path": "/portfolio/content.md?lang=tt&slug=work",
+      "status": 200,
+      "language": "tt",
+      "contentLanguage": "tt",
+      "canonicalLink": "<http://localhost:3000/tt/portfolio/work>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": false,
+      "caseTitlesPresent": 24,
+      "characters": 51443
+    },
+    {
+      "path": "/portfolio/content.md?lang=tt",
+      "status": 200,
+      "language": "tt",
+      "contentLanguage": "tt",
+      "canonicalLink": "<http://localhost:3000/tt/portfolio>; rel=\"canonical\"",
+      "sharedHomeCopyPresent": true,
+      "caseTitlesPresent": 24,
+      "characters": 67231
+    }
+  ],
+  "discovery": [
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "allURLs": 103,
+      "portfolioURLs": 99,
+      "workURLs": [
+        "http://localhost:3000/portfolio/work",
+        "http://localhost:3000/ru/portfolio/work",
+        "http://localhost:3000/tt/portfolio/work"
+      ],
+      "allWorkURLsPresent": true
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "expectedEntries": 18,
+      "missingEntries": []
+    }
+  ],
+  "failures": [],
+  "summary": {
+    "htmlResponses": 9,
+    "homeLanguages": 3,
+    "workLanguages": 3,
+    "founderIdentityLanguages": 3,
+    "workCasesPerLanguage": {
+      "en": 24,
+      "ru": 24,
+      "tt": 24
+    },
+    "markdownResponses": 9,
+    "portfolioSitemapURLs": 99,
+    "llmsExpectedEntriesPresent": 18,
+    "failureCount": 0,
+    "productionVerified": false
+  },
+  "limitations": [
+    "DEV responses only. Parent owns build and production verification.",
+    "No full 99-route repeat, no browser interaction, no external links/assets fetch, and no image rendering check.",
+    "No strict production CSP claim; development unsafe-eval is recorded as an environment observation.",
+    "Recorded HTML alternates are from the completed DEV pass before the final slug=home alternate correction. Its source and unit checks pass; the post-edit HTTP confirmation is recorded separately in the production property."
+  ],
+  "finishedAt": "2026-09-12T19:13:38.431488+00:00",
+  "durationSeconds": 3.52,
+  "postAuditMetadataChange": {
+    "changed": "HTML Markdown alternates now always include slug; home selects slug=home and the endpoint without a slug remains the combined source.",
+    "sourceFile": "src/lib/portfolio-metadata.ts",
+    "targetedBiome": "Passed",
+    "targetedHomepageMetadataTests": {
+      "passed": 15,
+      "failed": 0
+    },
+    "httpRecheck": "Passed in the separate production property: all six home/work pages have exact language and slug Markdown alternates.",
+    "recordedAt": "2026-09-12T19:17:00.583807+00:00"
+  },
+  "production": {
+    "environment": "production",
+    "server": "http://127.0.0.1:3000",
+    "startedAt": "2026-09-12T19:24:06.958693+00:00",
+    "scope": "Six home/work HTML URLs in EN/RU/TT, generated Open Graph image, sitemap count and health only. DEV observations retained separately; no full 99-route repeat.",
+    "html": [
+      {
+        "path": "/portfolio",
+        "status": 200,
+        "language": "en",
+        "canonical": ["http://localhost:3000/portfolio"],
+        "hreflang": {
+          "en": "http://localhost:3000/portfolio",
+          "ru": "http://localhost:3000/ru/portfolio",
+          "tt": "http://localhost:3000/tt/portfolio",
+          "x-default": "http://localhost:3000/portfolio"
+        },
+        "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=en&slug=home"],
+        "expectedMarkdownAlternate": "http://localhost:3000/portfolio/content.md?lang=en&slug=home",
+        "identity": {
+          "organizationName": "Bulachak",
+          "personNodeCount": 0,
+          "mainEntity": {
+            "@id": "http://localhost:3000/portfolio#bulachak"
+          }
+        },
+        "strictProductionCSP": true,
+        "scriptNonceUsedByHTML": true
+      },
+      {
+        "path": "/portfolio/work",
+        "status": 200,
+        "language": "en",
+        "canonical": ["http://localhost:3000/portfolio/work"],
+        "hreflang": {
+          "en": "http://localhost:3000/portfolio/work",
+          "ru": "http://localhost:3000/ru/portfolio/work",
+          "tt": "http://localhost:3000/tt/portfolio/work",
+          "x-default": "http://localhost:3000/portfolio/work"
+        },
+        "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=en&slug=work"],
+        "expectedMarkdownAlternate": "http://localhost:3000/portfolio/content.md?lang=en&slug=work",
+        "identity": {
+          "pageType": "CollectionPage",
+          "caseCount": 24,
+          "founder": "Kamilla Gafurzianova",
+          "allCasesAttributedToFounder": true
+        },
+        "strictProductionCSP": true,
+        "scriptNonceUsedByHTML": true
+      },
+      {
+        "path": "/ru/portfolio",
+        "status": 200,
+        "language": "ru",
+        "canonical": ["http://localhost:3000/ru/portfolio"],
+        "hreflang": {
+          "en": "http://localhost:3000/portfolio",
+          "ru": "http://localhost:3000/ru/portfolio",
+          "tt": "http://localhost:3000/tt/portfolio",
+          "x-default": "http://localhost:3000/portfolio"
+        },
+        "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=ru&slug=home"],
+        "expectedMarkdownAlternate": "http://localhost:3000/portfolio/content.md?lang=ru&slug=home",
+        "identity": {
+          "organizationName": "Bulachak",
+          "personNodeCount": 0,
+          "mainEntity": {
+            "@id": "http://localhost:3000/portfolio#bulachak"
+          }
+        },
+        "strictProductionCSP": true,
+        "scriptNonceUsedByHTML": true
+      },
+      {
+        "path": "/ru/portfolio/work",
+        "status": 200,
+        "language": "ru",
+        "canonical": ["http://localhost:3000/ru/portfolio/work"],
+        "hreflang": {
+          "en": "http://localhost:3000/portfolio/work",
+          "ru": "http://localhost:3000/ru/portfolio/work",
+          "tt": "http://localhost:3000/tt/portfolio/work",
+          "x-default": "http://localhost:3000/portfolio/work"
+        },
+        "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=ru&slug=work"],
+        "expectedMarkdownAlternate": "http://localhost:3000/portfolio/content.md?lang=ru&slug=work",
+        "identity": {
+          "pageType": "CollectionPage",
+          "caseCount": 24,
+          "founder": "Kamilla Gafurzianova",
+          "allCasesAttributedToFounder": true
+        },
+        "strictProductionCSP": true,
+        "scriptNonceUsedByHTML": true
+      },
+      {
+        "path": "/tt/portfolio",
+        "status": 200,
+        "language": "tt",
+        "canonical": ["http://localhost:3000/tt/portfolio"],
+        "hreflang": {
+          "en": "http://localhost:3000/portfolio",
+          "ru": "http://localhost:3000/ru/portfolio",
+          "tt": "http://localhost:3000/tt/portfolio",
+          "x-default": "http://localhost:3000/portfolio"
+        },
+        "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=tt&slug=home"],
+        "expectedMarkdownAlternate": "http://localhost:3000/portfolio/content.md?lang=tt&slug=home",
+        "identity": {
+          "organizationName": "Bulachak",
+          "personNodeCount": 0,
+          "mainEntity": {
+            "@id": "http://localhost:3000/portfolio#bulachak"
+          }
+        },
+        "strictProductionCSP": true,
+        "scriptNonceUsedByHTML": true
+      },
+      {
+        "path": "/tt/portfolio/work",
+        "status": 200,
+        "language": "tt",
+        "canonical": ["http://localhost:3000/tt/portfolio/work"],
+        "hreflang": {
+          "en": "http://localhost:3000/portfolio/work",
+          "ru": "http://localhost:3000/ru/portfolio/work",
+          "tt": "http://localhost:3000/tt/portfolio/work",
+          "x-default": "http://localhost:3000/portfolio/work"
+        },
+        "markdownAlternates": ["http://localhost:3000/portfolio/content.md?lang=tt&slug=work"],
+        "expectedMarkdownAlternate": "http://localhost:3000/portfolio/content.md?lang=tt&slug=work",
+        "identity": {
+          "pageType": "CollectionPage",
+          "caseCount": 24,
+          "founder": "Kamilla Gafurzianova",
+          "allCasesAttributedToFounder": true
+        },
+        "strictProductionCSP": true,
+        "scriptNonceUsedByHTML": true
+      }
+    ],
+    "supportingEndpoints": [
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "totalURLs": 103,
+        "portfolioURLs": 99,
+        "canonicalOrigin": "http://localhost:3000"
+      },
+      {
+        "path": "/opengraph-image",
+        "status": 200,
+        "contentType": "image/png",
+        "format": "PNG",
+        "dimensions": [1200, 630],
+        "bytes": 31559,
+        "scopeNote": "HTTP/image decoding verified; no visual image review in this pass."
+      },
+      {
+        "path": "/health",
+        "status": 200,
+        "body": {
+          "status": "healthy"
+        }
+      }
+    ],
+    "failures": [],
+    "summary": {
+      "htmlResponses": 6,
+      "html200": 6,
+      "exactMarkdownAlternates": 6,
+      "organizationHomeLanguages": 3,
+      "authoredWorkCollectionLanguages": 3,
+      "strictProductionCSPPages": 6,
+      "distinctScriptNonces": 6,
+      "portfolioSitemapURLs": 99,
+      "supportingEndpoints200": 3,
+      "failureCount": 0
+    },
+    "finishedAt": "2026-09-12T19:24:07.164775+00:00",
+    "durationSeconds": 0.22
+  }
+}

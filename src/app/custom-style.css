@@ -1,0 +1,2426 @@
+/* @polsia:user-owned — your custom global CSS: keyframes, animation classes, one-off global
+ * styles, and @import your own .css files. Prefer tw-animate-css for motion (animate-in,
+ * fade-in, slide-in-from-bottom-N, duration-*). globals.css is framework-owned — edit HERE. */
+
+/* Portfolio: Emerald Pasture greens, scoped away from the A4A service site. */
+.portfolio,
+.portfolio-nav,
+.portfolio-footer {
+  /* Corners: compact controls 3px, content surfaces 6px, large panels 10px. */
+  --portfolio-radius-control: 3px;
+  --portfolio-radius-surface: 6px;
+  --portfolio-radius-panel: 10px;
+  --radius: 6px;
+  --background: #f6faf7;
+  --foreground: #1d332c;
+  --card: #fcfefd;
+  --card-foreground: #1d332c;
+  --popover: #fcfefd;
+  --popover-foreground: #1d332c;
+  --primary: #1f684c;
+  --primary-foreground: #f7f5ed;
+  --secondary: #e4ebe0;
+  --secondary-foreground: #244c36;
+  --muted: #edf0e6;
+  --muted-foreground: #52665a;
+  --accent: #dce8dd;
+  --accent-foreground: #244c36;
+  --border: #c4d0c2;
+  --input: #748575;
+  --ring: #2e7655;
+  --elevation-1: rgb(21 61 44 / 0.08);
+  --elevation-2: rgb(21 61 44 / 0.12);
+  --elevation-3: rgb(21 61 44 / 0.16);
+  --shadow-brand-color: rgb(31 104 76 / 0.18);
+  --portfolio-field-background: #153d2c;
+  --portfolio-field-foreground: #f4f4e9;
+  --portfolio-field-sage: #b8cfb0;
+  --portfolio-ruby: #c8102e;
+  color: var(--foreground);
+}
+
+:is(.portfolio, .portfolio-nav, .portfolio-footer)
+  :is([data-slot="button"], [data-slot="badge"], input, select),
+.portfolio-skip-link {
+  border-radius: var(--portfolio-radius-control);
+}
+.case-visual,
+.case-artifact-image img,
+.case-evidence,
+.portfolio-load-error,
+.portfolio-about-portrait img {
+  border-radius: var(--portfolio-radius-surface);
+}
+.portfolio-fieldnote,
+.portfolio-legs,
+.portfolio-nav[data-slot="sheet-content"] {
+  border-radius: var(--portfolio-radius-panel);
+}
+.portfolio-legs {
+  overflow: hidden;
+}
+/* Circles remain for portraits, the ruby brand dot, and the orbit illustration. */
+.portfolio-theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+.dark .portfolio,
+.dark .portfolio-nav,
+.dark .portfolio-footer {
+  --background: #111c16;
+  --foreground: #eef1e7;
+  --card: #1b2a21;
+  --card-foreground: #eef1e7;
+  --popover: #1b2a21;
+  --popover-foreground: #eef1e7;
+  --primary: #91caa7;
+  --primary-foreground: #142c20;
+  --secondary: #293f30;
+  --secondary-foreground: #deebd9;
+  --muted: #203329;
+  --muted-foreground: #b0bcac;
+  --accent: #304b3a;
+  --accent-foreground: #e3efe0;
+  --border: #3b5545;
+  --input: #728674;
+  --ring: #9dd7af;
+  --elevation-1: rgb(4 17 10 / 0.25);
+  --elevation-2: rgb(4 17 10 / 0.35);
+  --elevation-3: rgb(4 17 10 / 0.45);
+  --shadow-brand-color: rgb(8 29 18 / 0.35);
+  --portfolio-ruby: #c8102e;
+}
+
+.portfolio-skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 60;
+  padding: 0.75rem 1rem;
+  background: var(--foreground);
+  color: var(--background);
+}
+.portfolio-skip-link:focus {
+  top: 0.5rem;
+}
+.portfolio-feature-card .portfolio-card-project {
+  color: var(--primary);
+  font-size: 0.75rem;
+  margin-block: 0.2rem 0.6rem;
+}
+.portfolio {
+  scroll-margin-top: 6rem;
+  background: var(--background);
+  color: var(--foreground);
+}
+.portfolio,
+.portfolio-nav,
+.portfolio-footer {
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.portfolio-container {
+  width: min(100% - 5rem, 76rem);
+  margin-inline: auto;
+}
+.portfolio h1,
+.portfolio h2,
+.portfolio h3 {
+  text-wrap: balance;
+}
+.portfolio h1,
+.portfolio h2,
+.portfolio-fieldnote blockquote,
+.case-visual-diagram p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+.portfolio h2 {
+  font-size: clamp(2rem, 3.7vw, 3.35rem);
+  line-height: 1.12;
+}
+.portfolio em {
+  color: var(--primary);
+  font-weight: 400;
+}
+.portfolio p {
+  text-wrap: pretty;
+}
+.portfolio[lang="tt"]
+  :is(
+    .story-header,
+    .bulachak-home-hero,
+    .bulachak-section-intro,
+    .bulachak-comparison,
+    .bulachak-branch-card,
+    .portfolio-legs
+  )
+  p {
+  text-wrap: balance;
+}
+@media (min-width: 1000px) {
+  .portfolio[lang="tt"] .story-body p {
+    text-wrap: balance;
+  }
+}
+.portfolio section[id],
+.portfolio article[id] {
+  scroll-margin-top: 9rem;
+}
+.portfolio-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.portfolio-dot {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--portfolio-ruby);
+}
+.portfolio-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 4.5rem;
+  padding-block: 5rem 4rem;
+  align-items: center;
+}
+.portfolio-hero h1 {
+  margin-top: 1.6rem;
+  font-size: clamp(3.3rem, 5.8vw, 5.8rem);
+  line-height: 1.02;
+}
+.portfolio-intro {
+  max-width: 32rem;
+  font-size: 1.04rem;
+  line-height: 1.8;
+  margin-top: 1.7rem;
+  color: var(--muted-foreground);
+}
+.portfolio-hero-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+.portfolio-byline {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2.8rem;
+}
+.portfolio-byline img {
+  border-radius: 50%;
+  width: 3.25rem;
+  height: 3.25rem;
+  object-fit: cover;
+}
+.portfolio-byline p {
+  font-size: 0.7rem;
+  line-height: 1.8;
+}
+.portfolio-byline span {
+  color: var(--muted-foreground);
+}
+.portfolio-fieldnote {
+  padding: 1.7rem;
+  background: var(--portfolio-field-background);
+  color: var(--portfolio-field-foreground);
+  overflow: hidden;
+}
+.fieldnote-top,
+.fieldnote-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+.fieldnote-top {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+}
+.fieldnote-orbit {
+  position: relative;
+  height: 15rem;
+  display: grid;
+  place-items: center;
+}
+.fieldnote-orbit > div {
+  position: absolute;
+  width: 12rem;
+  height: 12rem;
+  border: 1px solid color-mix(in oklch, var(--portfolio-field-sage) 48%, transparent);
+  border-radius: 50%;
+}
+.fieldnote-orbit > div:nth-child(1) {
+  transform: translateX(-2rem);
+}
+.fieldnote-orbit > div:nth-child(2) {
+  transform: translateX(2rem);
+}
+.fieldnote-orbit > div:nth-child(3) {
+  width: 9rem;
+  height: 9rem;
+  border-color: color-mix(in oklch, var(--portfolio-field-sage) 72%, transparent);
+}
+.fieldnote-orbit span {
+  text-align: center;
+  font:
+    2rem / 0.95 Georgia,
+    serif;
+  letter-spacing: -0.04em;
+  z-index: 1;
+}
+.fieldnote-orbit i {
+  font-size: 1.8rem;
+  color: var(--portfolio-field-sage);
+}
+.portfolio-fieldnote blockquote {
+  padding-block: 1.5rem;
+  font-size: 2.35rem;
+  line-height: 1.12;
+}
+.fieldnote-bottom {
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in oklch, var(--portfolio-field-sage) 36%, transparent);
+  font-size: 0.7rem;
+  line-height: 1.7;
+}
+.portfolio-threadline {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 1.25fr);
+  gap: 1rem;
+  align-items: center;
+  padding-block: 1.6rem;
+  border-block: 1px solid var(--border);
+}
+.portfolio-threadline > span {
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.portfolio-threadline > a {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 2.75rem;
+}
+.portfolio-threadline strong {
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.portfolio-threadline a > span {
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+}
+.portfolio-threadline a > svg {
+  margin-left: auto;
+}
+.portfolio-featured,
+.portfolio-approach {
+  padding-block: 4.5rem;
+}
+.portfolio-section-heading {
+  display: flex;
+  gap: 2rem;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+.portfolio-section-heading .portfolio-eyebrow {
+  margin-bottom: 0.85rem;
+  color: var(--muted-foreground);
+}
+.portfolio-section-heading > p {
+  max-width: 24rem;
+  color: var(--muted-foreground);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.portfolio-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+.portfolio-feature-card {
+  min-width: 0;
+}
+.portfolio-visual-link {
+  display: block;
+}
+.case-visual {
+  min-height: 15rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--muted);
+  color: var(--foreground);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.case-visual-top,
+.case-visual-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+.case-visual-top {
+  border-bottom: 1px solid var(--border);
+}
+.case-visual-bottom {
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+.case-artifact-image {
+  height: 11rem;
+  overflow: hidden;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+.case-artifact-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
+  border: 1px solid var(--border);
+}
+.case-visual-diagram {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.2rem 1.5rem;
+  min-height: 11rem;
+  overflow: hidden;
+  gap: 1rem;
+}
+.case-visual-diagram p {
+  font-size: 1.9rem;
+  line-height: 1.05;
+  z-index: 1;
+}
+.case-diagram-rule {
+  position: absolute;
+  width: 11rem;
+  height: 11rem;
+  right: -3rem;
+  bottom: -4rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1.5rem color-mix(in oklch, var(--primary) 5%, transparent),
+    0 0 0 3rem color-mix(in oklch, var(--primary) 3%, transparent);
+}
+.portfolio-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1rem 0.6rem;
+}
+.portfolio-card-meta > span:first-child {
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+}
+.portfolio-card-meta [data-slot="badge"] {
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding-inline: 0.45rem;
+}
+.portfolio-feature-card h3 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+.portfolio-feature-card h3 a,
+.portfolio-work-row h3 a,
+.case-related h3 a {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+.portfolio-feature-card h3 svg,
+.portfolio-work-row h3 svg,
+.case-related h3 svg {
+  flex-shrink: 0;
+}
+.portfolio-feature-card > p {
+  font-size: 0.76rem;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+  margin-block: 0.7rem 1rem;
+}
+.portfolio-highlight {
+  border-top: 1px solid var(--border);
+  padding-top: 0.8rem;
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+.portfolio a {
+  text-underline-offset: 0.2em;
+}
+.portfolio :where(h3) a:hover {
+  color: var(--primary);
+}
+.portfolio-work {
+  background: color-mix(in oklch, var(--muted) 65%, var(--background));
+  border-block: 1px solid var(--border);
+  padding-block: 4.5rem;
+}
+.portfolio-catalogue-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.portfolio-filters button {
+  font-size: 0.72rem;
+}
+.portfolio-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  max-width: 26rem;
+}
+.portfolio .portfolio-search > svg {
+  position: absolute;
+  left: 0.8rem;
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+.portfolio-search input {
+  padding-left: 2.5rem;
+  background: var(--background);
+  height: 2.75rem;
+  font-size: 0.8rem;
+}
+.portfolio-results-meta {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 0.3rem 0.8rem;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+  min-height: 2.75rem;
+}
+.portfolio-work-row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) 8rem 2.5rem;
+  gap: 1rem;
+  align-items: center;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.portfolio-work-row:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.portfolio-work-number {
+  align-self: start;
+  font-size: 0.7rem;
+  font-family: monospace;
+  color: var(--muted-foreground);
+  padding-top: 0.2rem;
+}
+.portfolio-work-category {
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+  letter-spacing: 0.04em;
+}
+.portfolio-work-category > span {
+  padding-inline: 0.4rem;
+}
+.portfolio-work-row h3 {
+  margin-block: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.portfolio-work-description h3 svg {
+  display: none;
+}
+.portfolio-work-description > p {
+  color: var(--muted-foreground);
+  font-size: 0.73rem;
+  line-height: 1.65;
+  max-width: 43rem;
+}
+.portfolio-work-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+.portfolio-work-tags [data-slot="badge"] {
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+.portfolio-show-all {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+.portfolio-context-note {
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+  line-height: 1.8;
+  max-width: 45rem;
+  margin-top: 1.8rem;
+}
+.portfolio-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 4rem;
+  text-align: center;
+}
+.portfolio-empty h3 {
+  font-size: 1.3rem;
+}
+.portfolio-empty > p {
+  color: var(--muted-foreground);
+}
+.portfolio-load-error {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+}
+.portfolio-method {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem;
+  margin-block: 3rem 3.5rem;
+}
+.portfolio-method article {
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+}
+.portfolio-method article > span {
+  font-size: 0.7rem;
+  color: var(--primary);
+  font-family: monospace;
+}
+.portfolio-method h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-block: 1.3rem 0.7rem;
+}
+.portfolio-method p,
+.portfolio-legs p {
+  font-size: 0.78rem;
+  line-height: 1.85;
+  color: var(--muted-foreground);
+}
+.portfolio-legs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--border);
+}
+.portfolio-legs article {
+  padding: 1.8rem;
+}
+.portfolio-legs article + article {
+  border-left: 1px solid var(--border);
+}
+.portfolio-legs article > span {
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  color: var(--primary);
+}
+.portfolio-legs h3 {
+  margin-block: 0.8rem 0.6rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.portfolio-legs a {
+  font-size: 0.7rem;
+  margin-top: 1rem;
+}
+.portfolio-about {
+  background: var(--muted);
+  border-block: 1px solid var(--border);
+  padding-block: 4.5rem;
+}
+.portfolio-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: center;
+}
+.portfolio-about-portrait img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.portfolio-about-portrait > span {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--muted-foreground);
+}
+.portfolio-about h2 {
+  font-size: clamp(2rem, 3.3vw, 2.8rem);
+  margin-block: 1rem 1.6rem;
+}
+.portfolio-about p:not(.portfolio-eyebrow) {
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+.portfolio-about a {
+  margin-top: 0.9rem;
+}
+.portfolio-contact {
+  text-align: center;
+  padding-block: 5rem;
+}
+.portfolio-contact h2 {
+  margin-block: 1rem 1.7rem;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+}
+.portfolio-contact > p:last-child {
+  color: var(--muted-foreground);
+  font-size: 0.74rem;
+  line-height: 1.8;
+  margin-top: 1.4rem;
+}
+.portfolio-case-loading {
+  min-height: 70vh;
+  padding-block: 4rem;
+}
+.case-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-top: 2rem;
+}
+.case-toolbar > div {
+  display: flex;
+  gap: 0.3rem;
+}
+.case-heading {
+  padding-block: 3rem;
+  max-width: 63rem;
+}
+.case-heading h1 {
+  font-size: clamp(2.8rem, 5.5vw, 5.4rem);
+  line-height: 1.06;
+  margin-block: 1rem 1.3rem;
+  max-width: 20ch;
+}
+@media (max-width: 600px) {
+  .portfolio[lang="tt"] .case-heading h1 {
+    font-size: clamp(2rem, 8vw, 2.65rem);
+    max-width: 100%;
+  }
+  .portfolio[lang="tt"] .story-header:not(.founder-header) h1 {
+    font-size: clamp(1.8rem, 7.5vw, 2.8rem);
+  }
+  .portfolio[lang="tt"] .story-body h2 {
+    font-size: clamp(1.55rem, 6vw, 2.1rem);
+  }
+}
+.case-subtitle {
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  line-height: 1.5;
+  max-width: 48rem;
+}
+.case-summary {
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  max-width: 49rem;
+  margin-top: 1rem;
+}
+.case-facts {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+}
+.case-facts > div > span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+  margin-bottom: 0.6rem;
+}
+.case-facts p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.case-facts [data-slot="badge"] {
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+.case-hero-artifact {
+  max-width: 65rem;
+}
+.case-visual-large .case-artifact-image {
+  height: auto;
+  max-height: 40rem;
+  padding: 1.5rem;
+}
+.case-visual-large .case-artifact-image img {
+  height: auto;
+  max-height: 37rem;
+  object-fit: contain;
+}
+.case-hero-artifact figcaption {
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin-top: 0.75rem;
+}
+.case-reading-layout {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 44rem);
+  gap: 5rem;
+  padding-block: 3rem;
+}
+.case-outline {
+  align-self: start;
+  position: sticky;
+  top: 8rem;
+}
+.case-outline nav > p {
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+.case-outline nav > a {
+  display: flex;
+  gap: 0.6rem;
+  align-items: start;
+  font-size: 0.73rem;
+  line-height: 1.6;
+  padding-block: 0.55rem;
+}
+.case-outline nav > a > span {
+  color: var(--muted-foreground);
+  width: 1.2rem;
+  flex-shrink: 0;
+  font-family: monospace;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+.case-outline nav > a:hover {
+  color: var(--primary);
+}
+.case-sidebar-note {
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.case-sidebar-note > p {
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  margin-top: 0.8rem;
+}
+.case-body > section {
+  margin-bottom: 3rem;
+}
+.case-body h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 1.3rem;
+}
+.case-body p,
+.case-body li {
+  font-size: 0.94rem;
+  line-height: 1.9;
+  color: var(--muted-foreground);
+}
+.case-body p + p {
+  margin-top: 1rem;
+}
+.case-body ul {
+  margin-top: 1rem;
+  list-style: disc;
+  padding-left: 1.3rem;
+}
+.case-body li {
+  padding-left: 0.3rem;
+  margin-block: 0.6rem;
+}
+.case-body li::marker {
+  color: var(--primary);
+}
+.case-body .portfolio-eyebrow {
+  font-size: 0.7rem;
+  margin-bottom: 0.8rem;
+  color: var(--foreground);
+}
+.case-evidence {
+  border: 1px solid var(--border);
+  background: var(--muted);
+  padding: 1.7rem;
+}
+.case-evidence h2 {
+  font-size: 1.8rem;
+}
+.case-evidence .case-evidence-caption {
+  font-size: 0.71rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+  margin-top: 1.4rem;
+}
+.case-evidence-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.case-evidence-links a {
+  white-space: normal;
+  height: auto;
+  min-height: 2.5rem;
+  padding-block: 0.6rem;
+}
+.case-connections {
+  padding-top: 1.5rem;
+}
+.case-connections strong {
+  color: var(--foreground);
+  font-weight: 500;
+}
+.case-related {
+  border-top: 1px solid var(--border);
+  padding-block: 3rem;
+}
+.case-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+.case-related h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-block: 0.8rem;
+}
+.case-related article > p:last-child {
+  font-size: 0.77rem;
+  color: var(--muted-foreground);
+  line-height: 1.8;
+}
+.case-contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  border-top: 1px solid var(--border);
+  padding-block: 3rem;
+}
+.case-contact h2 {
+  font-size: 2.5rem;
+}
+.portfolio :focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+@media (min-width: 1280px) {
+  .portfolio-catalogue-controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .portfolio-search {
+    width: 22rem;
+  }
+}
+@media (max-width: 1000px) {
+  .portfolio-container {
+    width: calc(100% - 3rem);
+  }
+  .portfolio-hero {
+    gap: 2.5rem;
+    padding-top: 3rem;
+  }
+  .portfolio-threadline {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .portfolio-threadline > span {
+    grid-column: 1 / -1;
+  }
+  .portfolio-threadline > span br {
+    display: none;
+  }
+  .portfolio-featured-grid {
+    gap: 1rem;
+  }
+  .portfolio-about-grid {
+    gap: 3rem;
+  }
+  .case-reading-layout {
+    gap: 2.5rem;
+    grid-template-columns: 11rem minmax(0, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .portfolio-container {
+    width: calc(100% - 2rem);
+  }
+  .portfolio-hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-block: 2.5rem;
+  }
+  .portfolio-hero h1 {
+    font-size: clamp(3rem, 11.5vw, 4.8rem);
+  }
+  .portfolio-intro {
+    font-size: 1rem;
+  }
+  .portfolio-byline {
+    margin-top: 1.8rem;
+  }
+  .portfolio-fieldnote {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1.3rem;
+  }
+  .fieldnote-top,
+  .fieldnote-bottom {
+    grid-column: 1 / -1;
+  }
+  .fieldnote-orbit {
+    height: 10rem;
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .fieldnote-orbit > div {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .fieldnote-orbit > div:nth-child(1) {
+    transform: translateX(-1rem);
+  }
+  .fieldnote-orbit > div:nth-child(2) {
+    transform: translateX(1rem);
+  }
+  .fieldnote-orbit > div:nth-child(3) {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  .fieldnote-orbit span,
+  .fieldnote-orbit i {
+    font-size: 1.3rem;
+  }
+  .portfolio-fieldnote blockquote {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+    font-size: 1.8rem;
+  }
+  .portfolio-threadline {
+    gap: 0.5rem;
+    padding-block: 1rem;
+  }
+  .portfolio-threadline > a {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .portfolio-threadline a > span {
+    order: 3;
+    flex-basis: 100%;
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+  .portfolio-threadline a > svg {
+    margin-left: 0;
+  }
+  .portfolio-section-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .portfolio-section-heading > p {
+    max-width: 100%;
+  }
+  .portfolio-featured,
+  .portfolio-work,
+  .portfolio-approach,
+  .portfolio-about {
+    padding-block: 3rem;
+  }
+  .portfolio-featured-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .case-artifact-image {
+    height: 15rem;
+  }
+  .case-visual-diagram {
+    min-height: 13rem;
+  }
+  .case-visual-diagram p {
+    font-size: 2.5rem;
+  }
+  .portfolio-card-meta > span:first-child,
+  .portfolio-card-meta [data-slot="badge"] {
+    font-size: 0.7rem;
+  }
+  .portfolio-feature-card h3 {
+    font-size: 1.35rem;
+  }
+  .portfolio-feature-card > p {
+    font-size: 0.88rem;
+  }
+  .portfolio-highlight {
+    font-size: 0.75rem;
+  }
+  .portfolio-filters {
+    gap: 0.2rem;
+  }
+  .portfolio-filters button {
+    white-space: normal;
+    height: auto;
+    min-height: 2.75rem;
+    text-align: left;
+    font-size: 0.72rem;
+    padding-inline: 0.7rem;
+  }
+  .portfolio-search {
+    max-width: none;
+  }
+  .portfolio-search input {
+    font-size: 1rem;
+  }
+  .portfolio-results-meta > span {
+    display: none;
+  }
+  .portfolio-work-row {
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    gap: 0.5rem;
+    padding-block: 1.35rem;
+  }
+  .portfolio-work-row h3 {
+    font-size: 1.18rem;
+  }
+  .portfolio-work-description h3 svg {
+    display: block;
+  }
+  .portfolio-work-description > p {
+    font-size: 0.79rem;
+  }
+  .portfolio-work-category {
+    font-size: 0.7rem;
+  }
+  .portfolio-work-tags {
+    grid-column: 2;
+    justify-content: start;
+    margin-top: 0.4rem;
+  }
+  .portfolio-row-arrow {
+    display: none;
+  }
+  .portfolio-method,
+  .portfolio-legs,
+  .portfolio-about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .portfolio-method {
+    margin-block: 2rem;
+  }
+  .portfolio-method h3 {
+    margin-top: 0.7rem;
+  }
+  .portfolio-method p,
+  .portfolio-legs p {
+    font-size: 0.85rem;
+  }
+  .portfolio-legs {
+    gap: 0;
+  }
+  .portfolio-legs article + article {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+  .portfolio-about-portrait {
+    max-width: 18rem;
+    margin-inline: auto;
+  }
+  .portfolio-about p:not(.portfolio-eyebrow) {
+    font-size: 0.88rem;
+  }
+  .portfolio-contact {
+    padding-block: 3.5rem;
+  }
+  .case-toolbar {
+    padding-top: 1rem;
+  }
+  .case-toolbar button,
+  .case-toolbar a {
+    font-size: 0.75rem;
+  }
+  .case-heading {
+    padding-block: 2rem;
+  }
+  .case-facts {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
+  .case-facts > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .case-reading-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-block: 2rem;
+  }
+  .case-outline {
+    position: static;
+  }
+  .case-outline nav {
+    border-block: 1px solid var(--border);
+    padding-block: 1rem;
+    display: flex;
+    gap: 0.5rem 1rem;
+    flex-wrap: wrap;
+  }
+  .case-outline nav > p {
+    flex-basis: 100%;
+    margin-bottom: 0;
+  }
+  .case-outline nav > a {
+    padding-block: 0.45rem;
+    min-height: 2.75rem;
+  }
+  .case-sidebar-note {
+    display: none;
+  }
+  .case-body > section {
+    margin-bottom: 2.5rem;
+  }
+  .case-body h2 {
+    font-size: 1.85rem;
+  }
+  .case-body p,
+  .case-body li {
+    font-size: 0.94rem;
+  }
+  .case-evidence {
+    padding: 1.2rem;
+  }
+  .case-related-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .case-related article + article {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+  }
+  .case-contact {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio *,
+  .portfolio-nav * {
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
+@media print {
+  .portfolio-nav,
+  .portfolio-footer,
+  .case-toolbar,
+  .case-outline,
+  .case-related,
+  .case-contact {
+    display: none;
+  }
+  .portfolio-container {
+    width: 100%;
+  }
+  .case-reading-layout {
+    display: block;
+    padding: 0;
+  }
+  .case-heading {
+    padding-block: 1rem;
+  }
+  .case-heading h1 {
+    font-size: 2.7rem;
+  }
+  .case-body > section {
+    break-inside: avoid;
+  }
+  .case-hero-artifact {
+    max-width: 70%;
+    margin: 1rem auto;
+  }
+  .case-evidence-links a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7rem;
+  }
+}
+
+/* Portfolio navigation and long-form pages. */
+.portfolio-nav-inner {
+  width: min(100% - 3rem, 76rem);
+  min-height: 6.8rem;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.portfolio-wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.portfolio-wordmark > span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 2.35rem;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.065em;
+}
+.portfolio-wordmark .portfolio-dot {
+  width: 0.52rem;
+  height: 0.52rem;
+  flex-shrink: 0;
+  margin: 0.2rem 0 0;
+  background: var(--portfolio-ruby);
+}
+
+.portfolio-wordmark small {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  letter-spacing: 0.025em;
+  color: var(--muted-foreground);
+}
+.portfolio-desktop-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.portfolio-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.portfolio-language select {
+  min-height: 2.75rem;
+  max-width: 8.5rem;
+  padding: 0.4rem 1.5rem 0.4rem 0.6rem;
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+.portfolio-language select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+.portfolio-footer-top {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+.portfolio-footer-brand {
+  grid-column: 1 / -1;
+}
+.portfolio-footer-links {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+}
+.portfolio-footer-links a {
+  color: var(--muted-foreground);
+  text-wrap: balance;
+}
+.portfolio-footer-links a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+.portfolio-footer-bottom {
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+}
+.portfolio-footer-bottom > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.portfolio-footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.portfolio-story {
+  padding-block: 4.5rem 6rem;
+  min-height: 70vh;
+}
+.story-header {
+  max-width: 58rem;
+  margin-bottom: 3rem;
+}
+.story-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 1.08;
+  margin: 1.3rem 0;
+  text-wrap: balance;
+}
+.story-header > p:last-child {
+  max-width: 58rem;
+  color: var(--muted-foreground);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+.story-layout {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 46rem);
+  gap: 4.5rem;
+  align-items: start;
+}
+.story-outline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 8rem;
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+}
+.story-outline a:hover {
+  color: var(--primary);
+}
+.story-outline-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+.story-body {
+  max-width: 46rem;
+}
+.story-body section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 9rem;
+}
+.story-body h2 {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+.story-body p {
+  margin-block: 1rem;
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--muted-foreground);
+}
+.story-next {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.founder-portrait {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.25rem;
+}
+.portfolio-credentials {
+  margin-top: 4rem;
+  padding: 3rem 0;
+  border-block: 1px solid var(--border);
+}
+.portfolio-credentials h2 {
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  margin-bottom: 0.8rem;
+}
+.portfolio-credentials > p {
+  color: var(--muted-foreground);
+}
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin-top: 2.5rem;
+}
+.credential-grid figure {
+  text-align: center;
+}
+.credential-grid img {
+  width: 100%;
+  max-width: 7.5rem;
+  aspect-ratio: 1;
+  object-fit: contain;
+  margin-inline: auto;
+}
+.credential-grid figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.credential-grid small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--primary);
+}
+@media (max-width: 1000px) {
+  .portfolio-desktop-links {
+    gap: 0;
+  }
+  .portfolio-desktop-links a {
+    padding-inline: 0.5rem;
+    font-size: 0.78rem;
+  }
+  .portfolio-wordmark > span {
+    font-size: 2rem;
+  }
+  .portfolio-wordmark small {
+    max-width: 15rem;
+  }
+  .story-layout {
+    gap: 2.5rem;
+    grid-template-columns: 11rem minmax(0, 1fr);
+  }
+  .credential-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+@media (max-width: 767px) {
+  .portfolio-nav-inner {
+    width: calc(100% - 2rem);
+    min-height: 6.5rem;
+    gap: 0.5rem;
+  }
+  .portfolio-desktop-links {
+    display: none;
+  }
+  .portfolio-wordmark > span {
+    font-size: 2rem;
+  }
+  .portfolio-wordmark small {
+    max-width: 13rem;
+    font-size: 0.6rem;
+  }
+  .portfolio-nav-controls {
+    gap: 0;
+  }
+  .portfolio-language select {
+    max-width: 6.3rem;
+    padding-left: 0.3rem;
+    font-size: 0.72rem;
+  }
+  .portfolio-footer-top {
+    gap: 2rem 1.25rem;
+  }
+  .portfolio-footer-bottom {
+    flex-direction: column;
+  }
+  .story-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .story-outline {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+  }
+  .story-outline-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .founder-outline {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1.25rem;
+    padding-bottom: 1rem;
+  }
+  .founder-outline .story-outline-links {
+    gap: 0.6rem 1.25rem;
+  }
+  .story-header h1 {
+    font-size: clamp(2.4rem, 9vw, 4rem);
+  }
+  .portfolio-story {
+    padding-top: 3rem;
+  }
+  .story-body h2 {
+    font-size: 1.8rem;
+  }
+  .credential-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .founder-portrait {
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 370px) {
+  .portfolio-nav-inner {
+    width: calc(100% - 1.4rem);
+  }
+  .portfolio-wordmark > span {
+    font-size: 1.7rem;
+  }
+  .portfolio-wordmark small {
+    max-width: 9.2rem;
+    font-size: 0.57rem;
+  }
+  .portfolio-language select {
+    max-width: 5.4rem;
+    font-size: 0.67rem;
+  }
+}
+
+.portfolio-nav-inner > .portfolio-wordmark {
+  min-width: 0;
+}
+.portfolio-nav[data-slot="sheet-content"] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.portfolio-nav[data-slot="sheet-content"] > button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: var(--portfolio-radius-control);
+}
+.portfolio-nav[data-slot="sheet-content"] nav [data-slot="button"] {
+  white-space: normal;
+  height: auto;
+  padding-block: 0.7rem;
+  text-align: left;
+}
+.portfolio [data-slot="skeleton"] {
+  border-radius: var(--portfolio-radius-surface);
+}
+@media (max-width: 1023px) {
+  .portfolio-desktop-links {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .portfolio-nav-inner > .portfolio-wordmark small {
+    max-width: 100%;
+  }
+  .portfolio-nav-controls {
+    gap: 0.2rem;
+  }
+}
+@media (max-width: 400px) {
+  .portfolio-nav-inner {
+    flex-wrap: wrap;
+    padding-block: 0.9rem;
+    gap: 0.9rem;
+  }
+  .portfolio-nav-inner > .portfolio-wordmark {
+    width: 100%;
+  }
+  .portfolio-nav-inner > .portfolio-wordmark small {
+    font-size: 0.65rem;
+  }
+  .portfolio-nav-controls {
+    width: 100%;
+    gap: 0.4rem;
+  }
+  .portfolio-language {
+    flex: 1;
+  }
+  .portfolio-language select {
+    width: 100%;
+    max-width: none;
+    font-size: 0.8rem;
+  }
+}
+/* Bulachak's homepage puts its three branches ahead of the project catalogue. */
+.bulachak-home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+  padding-block: 4.5rem 3.75rem;
+}
+.bulachak-home-hero h1 {
+  max-width: 24ch;
+  margin: 0;
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.bulachak-home-intro .portfolio-eyebrow {
+  margin-bottom: 1rem;
+}
+.bulachak-home-description {
+  max-width: 62ch;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+.bulachak-home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.bulachak-home-actions a {
+  min-height: 44px;
+}
+.bulachak-home-branches {
+  padding-bottom: 4rem;
+}
+.bulachak-home-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+.bulachak-home-heading h2 {
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+}
+.bulachak-home-heading > p {
+  max-width: 37ch;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.bulachak-branch-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+.bulachak-branch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  min-width: 0;
+  padding: 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--portfolio-radius-panel);
+  background: var(--card);
+}
+.bulachak-branch-card .portfolio-eyebrow {
+  color: var(--muted-foreground);
+  letter-spacing: 0.08em;
+}
+.bulachak-branch-code {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.25rem, 5.3vw, 4.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+  margin-block: 1.5rem 0.75rem;
+}
+.bulachak-branch-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+.bulachak-branch-role {
+  color: var(--primary);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin-top: 0.6rem;
+}
+.bulachak-branch-description {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  margin-block: 1rem 1.5rem;
+}
+.bulachak-branch-pledge {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--primary);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--portfolio-radius-control);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.bulachak-branch-card a {
+  min-height: 44px;
+  white-space: normal;
+  justify-content: start;
+  text-align: left;
+  margin-top: auto;
+  padding-inline: 0;
+}
+.bulachak-reciprocity {
+  margin-top: 2rem;
+  padding: 2.25rem 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--portfolio-radius-panel);
+  background: var(--card);
+}
+.bulachak-reciprocity-header {
+  margin-bottom: 1.75rem;
+}
+.bulachak-reciprocity-header h3 {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  margin-top: 0.5rem;
+}
+.bulachak-reciprocity-header p:last-child {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin-top: 0.4rem;
+}
+.bulachak-reciprocity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.bulachak-reciprocity-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border-radius: var(--portfolio-radius-surface);
+  background: var(--background);
+  border: 1px solid var(--border);
+}
+.bulachak-reciprocity-step-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+.bulachak-reciprocity-step h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.bulachak-reciprocity-step p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+.bulachak-home-philosophy-section {
+  padding-bottom: 2rem;
+}
+.bulachak-home-philosophy {
+  padding: 2.75rem 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3.5rem;
+  border-radius: var(--portfolio-radius-panel);
+  background: var(--portfolio-field-background);
+  color: var(--portfolio-field-foreground);
+}
+.bulachak-home-philosophy .portfolio-eyebrow {
+  color: var(--portfolio-field-sage);
+}
+.bulachak-home-philosophy h2 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  margin-top: 0.8rem;
+}
+.bulachak-home-philosophy p:not(.portfolio-eyebrow) {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--portfolio-field-sage);
+}
+.bulachak-home-philosophy .bulachak-home-alignment {
+  color: var(--portfolio-field-foreground);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.bulachak-home-philosophy a {
+  color: var(--portfolio-field-foreground);
+  margin-top: 1rem;
+  min-height: 44px;
+  padding-inline: 0;
+}
+.bulachak-home-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 3.5rem;
+  padding-block: 3.5rem 2.5rem;
+}
+.bulachak-home-work h2 {
+  font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+}
+.bulachak-home-work p {
+  max-width: 50ch;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+.bulachak-home-work-section {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+.bulachak-home-cases-wrap {
+  margin-top: 0.5rem;
+  padding-bottom: 2.5rem;
+}
+.bulachak-home-cases-header h3 {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  margin-top: 0.4rem;
+}
+.bulachak-home-cases-header p:last-child {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin-top: 0.35rem;
+}
+.bulachak-home-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.bulachak-home-case-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--portfolio-radius-panel);
+  background: var(--card);
+}
+.bulachak-home-case-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+.bulachak-home-case-category {
+  font-weight: 500;
+}
+.bulachak-home-case-legs {
+  font-family: monospace;
+  color: var(--primary);
+  font-weight: 600;
+}
+.bulachak-home-case-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+.bulachak-home-case-subtitle {
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+  margin-top: 0.35rem;
+}
+.bulachak-home-case-highlight {
+  margin-block: 1rem 0.75rem;
+  padding: 0.45rem 0.7rem;
+  background: var(--muted);
+  border-radius: var(--portfolio-radius-control);
+  border: 1px solid var(--border);
+}
+.bulachak-home-case-metric {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.bulachak-home-case-summary {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+.bulachak-home-case-link {
+  margin-top: auto;
+  padding-inline: 0;
+  min-height: 44px;
+  justify-content: start;
+}
+.bulachak-home-connect {
+  margin-block: 2rem 4rem;
+  padding: 3.5rem 2.5rem;
+  border-radius: var(--portfolio-radius-panel);
+  background: var(--card);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.bulachak-home-connect-inner {
+  max-width: 60ch;
+  margin-inline: auto;
+}
+.bulachak-home-connect h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  margin-top: 0.75rem;
+}
+.bulachak-home-connect-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  margin-top: 1rem;
+}
+.bulachak-home-connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+@media (max-width: 900px) {
+  .bulachak-reciprocity-grid,
+  .bulachak-home-cases-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .bulachak-reciprocity {
+    padding: 1.5rem;
+  }
+  .bulachak-home-connect {
+    padding: 2.25rem 1.5rem;
+  }
+}
+@media (max-width: 1000px) {
+  .bulachak-home-hero {
+    gap: 2rem;
+  }
+  .bulachak-branch-card {
+    padding: 1.3rem;
+  }
+  .bulachak-branch-card h3 {
+    font-size: 1.04rem;
+  }
+  .bulachak-home-philosophy {
+    padding: 2rem;
+    gap: 2rem;
+  }
+}
+@media (max-width: 767px) {
+  .bulachak-home-hero,
+  .bulachak-home-philosophy,
+  .bulachak-home-work {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  .bulachak-home-hero {
+    padding-block: 2.5rem 3rem;
+  }
+  .bulachak-home-hero h1 {
+    font-size: clamp(2.7rem, 8vw, 4.2rem);
+  }
+  .bulachak-home-description {
+    max-width: 55ch;
+    font-size: 1rem;
+  }
+  .bulachak-home-heading {
+    display: block;
+  }
+  .bulachak-home-heading > p {
+    max-width: 55ch;
+    margin-top: 0.75rem;
+  }
+  .bulachak-branch-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .bulachak-branch-card {
+    padding: 1.5rem;
+  }
+  .bulachak-branch-code {
+    font-size: 3.25rem;
+    margin-top: 1rem;
+  }
+  .bulachak-branch-card h3 {
+    font-size: 1.15rem;
+  }
+  .bulachak-home-branches {
+    padding-bottom: 2.5rem;
+  }
+  .bulachak-home-philosophy {
+    padding: 1.75rem 1.5rem;
+  }
+  .bulachak-home-work {
+    padding-block: 2.5rem 3rem;
+  }
+}
+/* About: concise comparison, a clear principle, then routes into the three stories. */
+.bulachak-about {
+  padding-block: 3.5rem 4.5rem;
+}
+.bulachak-about-header {
+  max-width: 58rem;
+  margin-bottom: 4rem;
+}
+.bulachak-about-header h1 {
+  font-size: clamp(2.5rem, 4.8vw, 4.4rem);
+  line-height: 1.1;
+  margin-top: 0.85rem;
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+.bulachak-about-lead {
+  max-width: 54rem;
+  font-size: 1.18rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+.bulachak-philosophy {
+  border-top: 1px solid var(--border);
+  padding-top: 3.5rem;
+  margin-bottom: 4rem;
+}
+.bulachak-philosophy-intro {
+  max-width: 54rem;
+  margin-bottom: 2.25rem;
+}
+.bulachak-about h2 {
+  font-size: clamp(1.85rem, 2.8vw, 2.5rem);
+  line-height: 1.2;
+}
+.bulachak-philosophy-intro h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  text-wrap: balance;
+}
+.bulachak-philosophy-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bulachak-philosophy-lead p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+.bulachak-section-intro p,
+.bulachak-alignment p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+.bulachak-comparison {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.bulachak-comparison article {
+  border: 1px solid var(--border);
+  border-radius: var(--portfolio-radius-surface);
+  padding: 1.75rem;
+  background: var(--card);
+}
+.bulachak-comparison h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.bulachak-comparison .bulachak-comparison-action {
+  text-wrap: balance;
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-block: 0.6rem 0.9rem;
+}
+.bulachak-comparison p:last-child {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+.bulachak-comparison .is-pasture {
+  background: var(--portfolio-field-background);
+  color: var(--portfolio-field-foreground);
+  border-color: var(--portfolio-field-background);
+}
+.bulachak-comparison .is-pasture :is(h3, p:last-child) {
+  color: var(--portfolio-field-sage);
+}
+.bulachak-home-philosophy-section .bulachak-comparison {
+  margin-top: 1.75rem;
+}
+.bulachak-alignment {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 4rem;
+  padding-block: 2.5rem;
+  margin-block: 2rem 3.5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.bulachak-alignment h2 {
+  max-width: 32ch;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.bulachak-initiative-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 1.75rem;
+}
+.bulachak-initiative-grid article {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-bottom: 0.5rem;
+}
+.bulachak-initiative-grid .bulachak-initiative-code {
+  color: var(--primary);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.bulachak-initiative-grid h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.bulachak-initiative-grid h3 + p {
+  margin-block: 0.5rem 0.8rem;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.bulachak-initiative-grid a {
+  min-height: 44px;
+  padding-inline: 0;
+  margin-top: auto;
+}
+.bulachak-about-next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+.bulachak-about-next a {
+  min-height: 44px;
+}
+@media (max-width: 800px) {
+  .bulachak-about-header {
+    margin-bottom: 2.5rem;
+  }
+  .bulachak-philosophy {
+    padding-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .bulachak-alignment {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .bulachak-comparison article {
+    padding: 1.2rem;
+  }
+  .bulachak-initiative-grid {
+    gap: 1.25rem;
+  }
+}
+@media (max-width: 600px) {
+  .bulachak-about {
+    padding-block: 2.25rem 3rem;
+  }
+  .bulachak-about-lead {
+    font-size: 1.05rem;
+  }
+  .bulachak-comparison,
+  .bulachak-initiative-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bulachak-comparison {
+    gap: 0.65rem;
+  }
+  .bulachak-comparison article {
+    padding: 1.1rem 1.25rem;
+  }
+  .bulachak-comparison .bulachak-comparison-action {
+    margin-block: 0.3rem 0.5rem;
+  }
+  .bulachak-alignment {
+    padding-block: 1rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .bulachak-initiative-grid {
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .bulachak-initiative-grid article + article {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .bulachak-initiative-grid .bulachak-initiative-code {
+    font-size: 1.65rem;
+    margin-bottom: 0.4rem;
+  }
+  .bulachak-about-next {
+    margin-top: 1rem;
+  }
+}
+/* Size the founder's name to its available width instead of splitting it. */
+.founder-header {
+  container-type: inline-size;
+}
+.founder-header h1 {
+  font-size: clamp(1rem, 8cqi, 4.8rem);
+  white-space: nowrap;
+}
+/* Founder footer: preserve the original compact badge row and expert positioning. */
+.portfolio:has(.founder-credentials) {
+  padding-bottom: 0;
+}
+.founder-credentials {
+  margin-top: 4rem;
+  padding-block: 3.5rem 3rem;
+  background: #070709;
+  color: #e6e6e8;
+  text-align: center;
+}
+.portfolio .founder-credentials h2,
+.portfolio .founder-credentials h3 {
+  font-family: var(--font-body, Arial, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.portfolio .founder-credentials h2 {
+  color: #96969b;
+}
+.founder-badge-row {
+  display: grid;
+  grid-template-columns: repeat(8, 80px);
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto 3rem;
+}
+.founder-badge-row img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+.founder-credentials p {
+  max-width: 72rem;
+  margin: 1.3rem auto 0;
+  color: #b5b5bb;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+.founder-credentials strong {
+  color: #e6e6e8;
+  font-weight: 700;
+}
+@media (max-width: 1000px) {
+  .founder-badge-row {
+    grid-template-columns: repeat(8, 64px);
+    gap: 1rem;
+  }
+  .founder-badge-row img {
+    width: 64px;
+    height: 64px;
+  }
+}
+@media (max-width: 720px) {
+  .founder-credentials {
+    padding-block: 2.5rem;
+  }
+  .founder-badge-row {
+    grid-template-columns: repeat(4, 64px);
+    column-gap: 1.25rem;
+    row-gap: 1rem;
+    margin-block: 1.8rem 2rem;
+  }
+  .portfolio .founder-credentials h2,
+  .portfolio .founder-credentials h3 {
+    font-size: 1.15rem;
+  }
+  .founder-credentials p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+}
+@media (max-width: 370px) {
+  .founder-badge-row {
+    grid-template-columns: repeat(4, 56px);
+    column-gap: 0.75rem;
+  }
+  .founder-badge-row img {
+    width: 56px;
+    height: 56px;
+  }
+}

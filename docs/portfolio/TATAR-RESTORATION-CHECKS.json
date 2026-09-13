@@ -1,0 +1,123 @@
+{
+  "checked_on": "2026-09-13T01:30:18.949Z",
+  "tatarPages": 33,
+  "pageFailures": [],
+  "portfolioSitemapEntries": 99,
+  "feeds": [
+    {
+      "path": "/api/portfolio?lang=en",
+      "status": 200,
+      "language": "en",
+      "length": 46628
+    },
+    {
+      "path": "/portfolio/content.md?lang=en",
+      "status": 200,
+      "language": "en",
+      "length": 62724
+    },
+    {
+      "path": "/portfolio/content.md?lang=en&slug=home",
+      "status": 200,
+      "language": "en",
+      "length": 1741
+    },
+    {
+      "path": "/portfolio/content.md?lang=en&slug=work",
+      "status": 200,
+      "language": "en",
+      "length": 49003
+    },
+    {
+      "path": "/portfolio/content.md?lang=en&slug=a4a",
+      "status": 200,
+      "language": "en",
+      "length": 1534
+    },
+    {
+      "path": "/api/portfolio?lang=ru",
+      "status": 200,
+      "language": "ru",
+      "length": 47941
+    },
+    {
+      "path": "/portfolio/content.md?lang=ru",
+      "status": 200,
+      "language": "ru",
+      "length": 66337
+    },
+    {
+      "path": "/portfolio/content.md?lang=ru&slug=home",
+      "status": 200,
+      "language": "ru",
+      "length": 1903
+    },
+    {
+      "path": "/portfolio/content.md?lang=ru&slug=work",
+      "status": 200,
+      "language": "ru",
+      "length": 51419
+    },
+    {
+      "path": "/portfolio/content.md?lang=ru&slug=a4a",
+      "status": 200,
+      "language": "ru",
+      "length": 1699
+    },
+    {
+      "path": "/api/portfolio?lang=tt",
+      "status": 200,
+      "language": "tt",
+      "length": 48958
+    },
+    {
+      "path": "/portfolio/content.md?lang=tt",
+      "status": 200,
+      "language": "tt",
+      "length": 67385
+    },
+    {
+      "path": "/portfolio/content.md?lang=tt&slug=home",
+      "status": 200,
+      "language": "tt",
+      "length": 1992
+    },
+    {
+      "path": "/portfolio/content.md?lang=tt&slug=work",
+      "status": 200,
+      "language": "tt",
+      "length": 52661
+    },
+    {
+      "path": "/portfolio/content.md?lang=tt&slug=a4a",
+      "status": 200,
+      "language": "tt",
+      "length": 1613
+    }
+  ],
+  "created_by": "Codex",
+  "date_created": "2026-09-12",
+  "automated": {
+    "tests": 129,
+    "testFiles": 12,
+    "typecheck": "passed",
+    "biomeFiles": 133,
+    "biome": "passed"
+  },
+  "browser": {
+    "narrowViewport": [320, 780],
+    "tatarPages": 33,
+    "horizontalOverflowFailures": 0,
+    "visualSamples": [
+      [390, 844],
+      [320, 780],
+      [844, 390],
+      [768, 1024],
+      [1024, 768],
+      [1080, 1920],
+      [1440, 900]
+    ],
+    "scope": "Representative screenshots and all-page narrow overflow checks, not exhaustive line-ending verification at every viewport",
+    "languageSwitch": "I4I English and back to Tatar verified"
+  }
+}

@@ -1,0 +1,52 @@
+# Bulachak
+
+> A future we build together.
+
+Bulachak means "the future" in Tatar. It brings together three branches: Agents 4 Athletes for practical support in sport, Parafencing 4 Progress for access to adaptive fencing, and Immigrant 4 Immigrant for community and mutual support.
+
+The Emerald Pasture is built on co-opetition: people can both compete and cooperate. Sharing knowledge and combining strengths within clear agreements can grow total value instead of only dividing a fixed pool. Human alignment first, AI second.
+
+The homepage introduces the three branches. The separate work directory presents founder Kamilla Gafurzianova's earlier projects as experience informing Bulachak. Those case studies describe her role, the work's status, and available evidence; they are not presented as completed outcomes of the developing branches.
+
+## Available language editions
+
+- [English homepage](/portfolio)
+- [Главная страница на русском](/ru/portfolio)
+- [Татарча баш бит](/tt/portfolio)
+
+## The three branches
+
+- [A4A: Agents 4 Athletes](/portfolio/a4a): Commercial engine. Developing practical tools and operations support for athletes, clubs, and sports organizations.
+- [P4P: Parafencing 4 Progress](/portfolio/p4p): Nonprofit branch in development. A vision for equipment, coaching, and support that makes participation easier.
+- [I4I: Immigrant 4 Immigrant](/portfolio/i4i): Immigrant support. Mutual support, shared knowledge, and cultural continuity across immigrant communities.
+
+## The founder's work
+
+- [English work directory](/portfolio/work)
+- [Проекты на русском](/ru/portfolio/work)
+- [Татарча проектлар](/tt/portfolio/work)
+
+## Readable text
+
+- [English homepage text](/portfolio/content.md?lang=en&slug=home)
+- [Текст главной страницы на русском](/portfolio/content.md?lang=ru&slug=home)
+- [Баш битнең татарча тексты](/portfolio/content.md?lang=tt&slug=home)
+- [English work directory and case studies](/portfolio/content.md?lang=en&slug=work)
+- [Проекты и кейсы на русском](/portfolio/content.md?lang=ru&slug=work)
+- [Проектлар турында татарча](/portfolio/content.md?lang=tt&slug=work)
+- [English: all public content](/portfolio/content.md?lang=en)
+- [Русский: все открытые материалы](/portfolio/content.md?lang=ru)
+- [Татарча: барлык ачык материаллар](/portfolio/content.md?lang=tt)
+
+The Markdown endpoint defaults to English when lang is omitted. Published language values are en, ru, and tt. With no slug it includes the Bulachak homepage, work directory, and all public stories, policies, and cases. Add slug=home for the introduction to Bulachak and its branches, slug=work for the founder's work directory and full case records, or a page or case slug for one item. Unsupported languages or malformed slugs return 400; unknown slugs return 404. Each text response identifies its language and canonical HTML page. URLs resolve against this site's public origin.
+
+## Context and policies
+
+- [About Bulachak](/portfolio/about)
+- [Founder](/portfolio/founder)
+- [Privacy](/portfolio/privacy)
+- [Terms](/portfolio/terms)
+- [Sitemap](/sitemap.xml)
+- [Crawler rules](/robots.txt)
+
+This file is a reading and discovery aid following the llms.txt proposal. It does not guarantee that search engines or AI services will discover, index, or cite the site. Follow the site's crawler rules and retain the evidence limits and authorship of the material you use.

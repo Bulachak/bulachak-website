@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f6faf7"/>
+  <text x="80" y="100" fill="#1d332c" font-family="Arial,sans-serif" font-size="38" font-weight="600">bulachak</text>
+  <text x="80" y="140" fill="#52665a" font-family="Arial,sans-serif" font-size="20">A future we build together</text>
+  <circle cx="255" cy="91" r="5" fill="#c8102e"/>
+  <text x="80" y="265" fill="#1d332c" font-family="Georgia,serif" font-size="88">Good systems.</text>
+  <text x="80" y="365" fill="#1f684c" font-family="Georgia,serif" font-size="88" font-style="italic">More time for people.</text>
+  <line x1="80" y1="460" x2="1120" y2="460" stroke="#c4d0c2"/>
+  <text x="80" y="525" fill="#1d332c" font-family="Arial,sans-serif" font-size="24">KAMILLA GAFURZIANOVA, OLY</text>
+  <text x="80" y="565" fill="#52665a" font-family="Arial,sans-serif" font-size="20">Sport, adaptive fencing, and the immigrant experience.</text>
+  <text x="920" y="532" fill="#1f684c" font-family="Arial,sans-serif" font-size="24">A4A · P4P · I4I</text>
+</svg>
+
