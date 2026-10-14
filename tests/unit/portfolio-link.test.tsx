@@ -1,4 +1,3 @@
-// @polsia:user-owned: fragment navigation must replace the previous section in every language.
 import { act, type ComponentProps } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
@@ -40,38 +39,48 @@ afterEach(async () => {
   vi.unstubAllGlobals();
 });
 
-it.each(['', '/ru'])(
-  'replaces the current fragment when the %s wordmark is clicked, retaining localized page navigation',
-  async (prefix) => {
-    window.history.replaceState(null, '', `${prefix}/portfolio#branches`);
+it.each([
+  { homePath: '/', workPath: '/work' },
+  { homePath: '/ru', workPath: '/ru/work' },
+])(
+  'replaces the current fragment when the $homePath wordmark is clicked, retaining localized page navigation',
+  async ({ homePath, workPath }) => {
+    window.history.replaceState(null, '', `${homePath}#branches`);
     await act(() => {
-      root.render(<PortfolioLink href="/portfolio#portfolio-main">Bulachak</PortfolioLink>);
+      root.render(<PortfolioLink href="/#portfolio-main">Bulachak</PortfolioLink>);
     });
     const wordmark = container.querySelector('a');
     if (!wordmark) throw new Error('The wordmark link is missing.');
     await act(() => wordmark.click());
     await vi.waitFor(() => expect(window.location.hash).toBe('#portfolio-main'));
-    expect(window.location.pathname).toBe(`${prefix}/portfolio`);
+    expect(window.location.pathname).toBe(homePath);
     expect(navigate).not.toHaveBeenCalled();
 
     await act(() => {
-      root.render(<PortfolioLink href="/portfolio/work">Work</PortfolioLink>);
+      root.render(<PortfolioLink href="/work">Work</PortfolioLink>);
     });
     const workLink = container.querySelector('a');
     if (!workLink) throw new Error('The work link is missing.');
     await act(() => workLink.click());
-    expect(navigate).toHaveBeenCalledWith(`${prefix}/portfolio/work`);
+    expect(navigate).toHaveBeenCalledWith(workPath);
   },
 );
 
-it('keeps restored Tatar navigation in the Tatar edition', async () => {
-  window.history.replaceState(null, '', '/tt/portfolio/a4a');
+it('keeps restored Tatar navigation in the Tatar edition for both editorial and action routes', async () => {
+  window.history.replaceState(null, '', '/tt/a4a');
   await act(() => {
-    root.render(<PortfolioLink href="/portfolio/work">Work</PortfolioLink>);
+    root.render(<PortfolioLink href="/work">Work</PortfolioLink>);
   });
   const workLink = container.querySelector('a');
   if (!workLink) throw new Error('The work link is missing.');
-  expect(workLink.getAttribute('href')).toBe('/tt/portfolio/work');
+  expect(workLink.getAttribute('href')).toBe('/tt/work');
   await act(() => workLink.click());
-  expect(navigate).toHaveBeenCalledWith('/tt/portfolio/work');
+  expect(navigate).toHaveBeenCalledWith('/tt/work');
+
+  await act(() => {
+    root.render(<PortfolioLink href="/audit">Audit</PortfolioLink>);
+  });
+  const auditLink = container.querySelector('a');
+  if (!auditLink) throw new Error('The audit link is missing.');
+  expect(auditLink.getAttribute('href')).toBe('/tt/audit');
 });

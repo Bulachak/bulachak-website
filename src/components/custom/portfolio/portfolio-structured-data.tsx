@@ -27,8 +27,8 @@ export function PortfolioStructuredData({
   const work = cases.find((item) => item.slug === slug);
   const isWorkDirectory = slug === 'work';
   const includePerson = Boolean(work) || isWorkDirectory || slug === 'founder';
-  const personId = `${siteUrl}/portfolio/founder#person`;
-  const organizationId = `${siteUrl}/portfolio#bulachak`;
+  const personId = `${siteUrl}/founder#person`;
+  const organizationId = `${siteUrl}/#bulachak`;
   const data = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -53,10 +53,10 @@ export function PortfolioStructuredData({
       },
       {
         '@type': 'WebSite',
-        '@id': `${siteUrl}/portfolio#website`,
+        '@id': `${siteUrl}/#website`,
         name: 'Bulachak',
         description: home.description,
-        url: `${siteUrl}/portfolio`,
+        url: siteUrl,
         inLanguage: publishedPortfolioLanguages,
       },
       {
@@ -74,7 +74,7 @@ export function PortfolioStructuredData({
           work?.summary ??
           (isWorkDirectory ? directory.description : home.description),
         inLanguage: language,
-        isPartOf: { '@id': `${siteUrl}/portfolio#website` },
+        isPartOf: { '@id': `${siteUrl}/#website` },
         ...(work
           ? { author: { '@id': personId } }
           : isWorkDirectory

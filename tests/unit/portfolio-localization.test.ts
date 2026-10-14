@@ -166,22 +166,26 @@ describe('localized public story pages', () => {
 
 describe('portfolio language navigation', () => {
   it('switches languages without losing the case, query or section anchor', () => {
-    const detail = '/portfolio/playla-family-resource-app?from=search#delivery';
+    const detail = '/playla-family-resource-app?from=search#delivery';
     const russian = localizePortfolioHref(detail, 'ru');
-    expect(russian).toBe('/ru/portfolio/playla-family-resource-app?from=search#delivery');
+    expect(russian).toBe('/ru/playla-family-resource-app?from=search#delivery');
     const tatar = localizePortfolioHref(russian, 'tt');
-    expect(tatar).toBe('/tt/portfolio/playla-family-resource-app?from=search#delivery');
+    expect(tatar).toBe('/tt/playla-family-resource-app?from=search#delivery');
     expect(localizePortfolioHref(tatar, 'en')).toBe(detail);
+    // Also normalizes legacy /portfolio/* links to flattened canonical paths
+    expect(
+      localizePortfolioHref('/portfolio/playla-family-resource-app?from=search#delivery', 'ru'),
+    ).toBe('/ru/playla-family-resource-app?from=search#delivery');
   });
 
-  it('uses one canonical home per language for catalogue and policy pages', () => {
-    expect(portfolioHref('en')).toBe('/portfolio');
-    expect(portfolioHref('ru')).toBe('/ru/portfolio');
-    expect(portfolioHref('tt', '/privacy')).toBe('/tt/portfolio/privacy');
-    expect(localizePortfolioHref('/ru/portfolio/terms', 'en')).toBe('/portfolio/terms');
-    expect(localizePortfolioHref('/portfolio?category=web#work', 'tt')).toBe(
-      '/tt/portfolio?category=web#work',
-    );
+  it('uses one canonical home per language for catalogue, policy, and action pages', () => {
+    expect(portfolioHref('en')).toBe('/');
+    expect(portfolioHref('ru')).toBe('/ru');
+    expect(portfolioHref('tt', '/privacy')).toBe('/tt/privacy');
+    expect(localizePortfolioHref('/ru/terms', 'en')).toBe('/terms');
+    expect(localizePortfolioHref('/?category=web#work', 'tt')).toBe('/tt?category=web#work');
+    expect(localizePortfolioHref('/audit', 'ru')).toBe('/ru/audit');
+    expect(localizePortfolioHref('/ru/intake/athlete', 'tt')).toBe('/tt/intake/athlete');
   });
 
   it('recognizes only supported language prefixes and real portfolio paths', () => {
@@ -189,21 +193,33 @@ describe('portfolio language navigation', () => {
     for (const invalid of ['', 'fr', 'EN', 'en-US', 'constructor']) {
       expect(isPortfolioLanguage(invalid)).toBe(false);
     }
-    for (const path of ['/portfolio', '/ru/portfolio/about', '/tt/portfolio/founder']) {
+    for (const path of [
+      '/',
+      '/about',
+      '/ru/about',
+      '/tt/founder',
+      '/audit',
+      '/ru/audit',
+      '/tt/intake/athlete',
+      '/portfolio',
+      '/ru/portfolio/about',
+    ]) {
       expect(isPortfolioPath(path), path).toBe(true);
     }
     for (const path of [
       '/fr/portfolio',
       '/en/portfolio',
+      '/en/about',
       '/russian/portfolio',
       '/portfolio-old',
       '/ru/portfolio-copy',
+      '/health',
     ]) {
       expect(isPortfolioPath(path), path).toBe(false);
     }
-    expect(languageFromPath('/ru/portfolio/about')).toBe('ru');
-    expect(languageFromPath('/tt/portfolio/founder')).toBe('tt');
-    expect(languageFromPath('/portfolio')).toBe('en');
+    expect(languageFromPath('/ru/about')).toBe('ru');
+    expect(languageFromPath('/tt/founder')).toBe('tt');
+    expect(languageFromPath('/about')).toBe('en');
     expect(languageFromPath('/fr/portfolio')).toBe('en');
   });
 

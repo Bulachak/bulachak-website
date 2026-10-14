@@ -1,12 +1,11 @@
-// @polsia:user-owned: reviewed language editions have consistent public serving and discovery.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createElement, isValidElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it, vi } from 'vitest';
-import TranslatedPortfolioPage, {
+import UnifiedPortfolioAndLocalePage, {
   generateMetadata,
-} from '@/app/(custom)/[language]/portfolio/[[...path]]/page';
+} from '@/app/(custom)/[language]/[[...path]]/page';
 import { PortfolioNav } from '@/components/custom/portfolio/portfolio-nav';
 import { PortfolioStructuredData } from '@/components/custom/portfolio/portfolio-structured-data';
 import { bulachakHomeCopy } from '@/lib/business/bulachak-home';
@@ -21,12 +20,13 @@ import {
 import { portfolioMetadata } from '@/lib/portfolio-metadata';
 import { seoRoutes } from '@/lib/seo-routes';
 
-const { pathname } = vi.hoisted(() => ({ pathname: vi.fn(() => '/portfolio') }));
+const { pathname } = vi.hoisted(() => ({ pathname: vi.fn(() => '/') }));
 
 vi.mock('@/lib/site', () => ({ siteUrl: 'https://bulachak.example' }));
 vi.mock('next/navigation', () => ({
   usePathname: pathname,
   useRouter: () => ({ push: vi.fn() }),
+  useSearchParams: () => new URLSearchParams(),
   redirect: (url: string): never => {
     throw new Error(`REDIRECT:${url}`);
   },
@@ -35,12 +35,21 @@ vi.mock('next/navigation', () => ({
   },
 }));
 
-const representativeSlugs = ['', 'work', 'about', 'playla-family-resource-app'];
-const unsupportedLink = /\/zz\/portfolio|[?&]lang=zz/;
+const representativeSlugs = [
+  '',
+  'work',
+  'about',
+  'playla-family-resource-app',
+  'audit',
+  'pricing',
+  'webinar',
+  'intake/athlete',
+];
+const unsupportedLink = /\/zz\/|[?&]lang=zz/;
 
 function routeProps(language: string, slug = '') {
   return {
-    params: Promise.resolve({ language, path: slug ? [slug] : [] }),
+    params: Promise.resolve({ language, path: slug ? slug.split('/') : [] }),
     searchParams: Promise.resolve({
       q: 'sport & access',
       tag: ['operations', 'community'],
@@ -67,7 +76,7 @@ describe('portfolio language publication boundary', () => {
   });
 
   it('offers every published language choice on all three editions', () => {
-    for (const path of ['/portfolio', '/ru/portfolio/work', '/tt/portfolio/a4a']) {
+    for (const path of ['/', '/ru/work', '/tt/a4a', '/ru/audit']) {
       pathname.mockReturnValue(path);
       const html = renderToStaticMarkup(createElement(PortfolioNav));
       const document = new DOMParser().parseFromString(html, 'text/html');
@@ -78,10 +87,10 @@ describe('portfolio language publication boundary', () => {
     }
   });
 
-  it('advertises only published editions in sitemap, metadata, schema and text discovery', async () => {
+  it('advertises all 114 localized editorial and action routes across en, ru, and tt', async () => {
     const routes = await seoRoutes();
-    expect(routes).toHaveLength(99);
-    expect(new Set(routes.map((route) => route.path)).size).toBe(99);
+    expect(routes).toHaveLength(114);
+    expect(new Set(routes.map((route) => route.path)).size).toBe(114);
     for (const route of routes) {
       expect(Object.keys(route.alternates?.languages ?? {}).sort()).toEqual(['en', 'ru', 'tt']);
       expect(JSON.stringify(route)).not.toMatch(unsupportedLink);
@@ -118,27 +127,35 @@ describe('portfolio language publication boundary', () => {
 
   it('rejects unsupported languages before serving pages or metadata', async () => {
     for (const slug of representativeSlugs) {
-      for (const handler of [TranslatedPortfolioPage, generateMetadata]) {
+      for (const handler of [UnifiedPortfolioAndLocalePage, generateMetadata]) {
         await expect(handler(routeProps('zz', slug))).rejects.toThrow('NOT_FOUND');
       }
     }
   });
 
   it.each(['ru', 'tt'])(
-    'serves valid %s pages and metadata without redirecting them',
+    'serves valid %s pages and metadata at flattened canonical URLs without redirecting them',
     async (language) => {
       for (const slug of representativeSlugs) {
-        expect(isValidElement(await TranslatedPortfolioPage(routeProps(language, slug)))).toBe(
-          true,
-        );
+        expect(
+          isValidElement(await UnifiedPortfolioAndLocalePage(routeProps(language, slug))),
+        ).toBe(true);
         const metadata = await generateMetadata(routeProps(language, slug));
-        expect(metadata.alternates?.canonical).toBe(
-          `/${language}/portfolio${slug ? `/${slug}` : ''}`,
-        );
+        expect(metadata.alternates?.canonical).toBe(`/${language}${slug ? `/${slug}` : ''}`);
         expect(metadata.description).toBe(
           portfolioMetadata(language as 'ru' | 'tt', slug).description,
         );
       }
     },
   );
+
+  it('serves flattened English root editorial and case study routes directly', async () => {
+    for (const enSlug of ['work', 'about', 'a4a', 'playla-family-resource-app']) {
+      expect(isValidElement(await UnifiedPortfolioAndLocalePage(routeProps(enSlug, '')))).toBe(
+        true,
+      );
+      const metadata = await generateMetadata(routeProps(enSlug, ''));
+      expect(metadata.alternates?.canonical).toBe(`/${enSlug}`);
+    }
+  });
 });

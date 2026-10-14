@@ -15,7 +15,7 @@ function sections([challenge, approach, delivery, learning]: Story): CaseStudy['
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'everest-digital-experience',
-    title: 'A faster website for a local business',
+    title: 'A\u00A0faster website for\u00A0a local business',
     subtitle: 'Everest Tower · Website redesign and analytics',
     category: 'Web & product',
     legs: ['I4I'],
@@ -110,7 +110,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'playla-family-resource-app',
-    title: 'A few fewer steps between a family and a game',
+    title: 'A\u00A0few fewer steps between a\u00A0family and\u00A0a game',
     subtitle: 'PlayLA · Bilingual public resource app',
     category: 'Web & product',
     legs: ['A4A', 'P4P'],
@@ -168,7 +168,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'hall-of-fame-governance',
-    title: 'Making a sensitive review process easier to follow',
+    title: 'Making a\u00A0sensitive review process easier to\u00A0follow',
     subtitle: 'USA Fencing Hall of Fame · Governance system design',
     category: 'Operations & automation',
     legs: ['A4A'],
@@ -194,7 +194,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'sffa-brand-and-campaign-tools',
-    title: 'A welcoming brand a small team can keep using',
+    title: 'A\u00A0welcoming brand a\u00A0small team can keep using',
     subtitle: 'San Francisco Fencing Academy · Identity and campaign tools',
     category: 'Web & product',
     legs: ['A4A'],
@@ -247,7 +247,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'aisa-course-launch-generator',
-    title: 'Turning a course brief into a launch package',
+    title: 'Turning a\u00A0course brief into\u00A0a launch package',
     subtitle: 'AI Start Academy · Course and funnel generator',
     category: 'Web & product',
     legs: [],
@@ -269,7 +269,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'aisa-branded-asset-generator',
-    title: 'Building brand rules into a content tool',
+    title: 'Building brand rules into\u00A0a content tool',
     subtitle: 'AI Start Academy · Visual asset and copy generator',
     category: 'Web & product',
     legs: [],
@@ -353,7 +353,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'north-american-market-entry',
-    title: 'Understanding a market before entering it',
+    title: 'Understanding a\u00A0market before entering it',
     subtitle: 'ArtDesignStory · Market-entry strategy',
     category: 'Strategy & storytelling',
     legs: ['I4I'],
@@ -379,7 +379,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'local-practice-digital-presence',
-    title: 'Helping people find and understand a local practice',
+    title: 'Helping people find and\u00A0understand a\u00A0local practice',
     subtitle: 'Dermatology practice · Marketing and operations overview',
     category: 'Strategy & storytelling',
     legs: [],
@@ -402,7 +402,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'tuganlyq-nonprofit-web-governance',
-    title: 'A nonprofit website with a plan for its upkeep',
+    title: 'A\u00A0nonprofit website with a\u00A0plan for its upkeep',
     subtitle: 'Tuganlyq · Nonprofit web and governance work',
     category: 'Community & access',
     legs: ['I4I'],
@@ -427,7 +427,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'fencing-curriculum-architecture',
-    title: 'A curriculum coaches can share',
+    title: 'A\u00A0curriculum coaches can share',
     subtitle: 'Fencing education · Curriculum design',
     category: 'Community & access',
     legs: ['A4A'],
@@ -453,7 +453,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'fencing-organization-data-model',
-    title: "Connecting a sports organization's scattered records",
+    title: "Connecting a\u00A0sports organization's scattered records",
     subtitle: 'Fencing operations · Database design',
     category: 'Operations & automation',
     legs: ['A4A'],
@@ -615,7 +615,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'strategy-decision-dashboard',
-    title: 'Making a dense technical dashboard easier to read',
+    title: 'Making a\u00A0dense technical dashboard easier to\u00A0read',
     subtitle: 'Self-directed work · Strategy decision dashboard',
     category: 'Web & product',
     legs: [],
@@ -638,7 +638,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'nonprofit-content-publishing',
-    title: 'A publishing workflow volunteers can follow',
+    title: 'A\u00A0publishing workflow volunteers can follow',
     subtitle: 'Workforce development nonprofit · Content operations',
     category: 'Operations & automation',
     legs: [],

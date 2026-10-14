@@ -118,27 +118,19 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* === BEGIN polsia-slot:brand_tokens === */
-/* THE SEED — the agent's only styling authority on this file.
-   Set the brand HUE (and optionally chroma/lightness), the radius, and the
-   fonts. The framework derives the full --brand ramp + every surface/text/
-   border role + dark mode from these (see the derived block below), so editing
-   --brand-h ALONE recolors the entire site. Keep values in range. */
+/* Bulachak Emerald Pasture root theme tokens and derived brand ramp. */
 :root {
-  --brand-h: 36; /* brand hue, 0–360 — podium/medal amber-gold */
-  --brand-c: 0.18; /* brand chroma (saturation), 0–0.3 — restrained for B2B */
-  --brand-l: 0.58; /* lightness of the brand-500 step, 0.40–0.70 */
-  --radius: 0.5rem; /* corner roundness — cascades to every primitive */
+  --brand-h: 155; /* Bulachak Emerald Green */
+  --brand-c: 0.1;
+  --brand-l: 0.45;
+  --radius: 6px;
+  --portfolio-radius-control: 3px;
+  --portfolio-radius-surface: 6px;
+  --portfolio-radius-panel: 10px;
 
   --font-display: "Inter", "ui-sans-serif", "system-ui", sans-serif;
   --font-body: "Inter", "ui-sans-serif", "system-ui", sans-serif;
-}
-/* === END polsia-slot:brand_tokens === */
 
-/* FRAMEWORK-DERIVED — NOT agent-editable (outside the slot). The full ramp,
-   every semantic role, and dark mode are computed from the seed above. Neutrals
-   carry a touch of the brand hue so one hue change reskins the whole surface. */
-:root {
   --brand-50: oklch(0.97 calc(var(--brand-c) * 0.25) var(--brand-h));
   --brand-100: oklch(0.93 calc(var(--brand-c) * 0.4) var(--brand-h));
   --brand-200: oklch(0.87 calc(var(--brand-c) * 0.6) var(--brand-h));
@@ -150,55 +142,60 @@
   --brand-800: oklch(calc(var(--brand-l) - 0.24) calc(var(--brand-c) * 0.75) var(--brand-h));
   --brand-900: oklch(calc(var(--brand-l) - 0.32) calc(var(--brand-c) * 0.55) var(--brand-h));
 
-  --background: oklch(0.99 0.004 var(--brand-h));
-  --foreground: oklch(0.18 0.01 var(--brand-h));
-  --card: oklch(1 0.002 var(--brand-h));
-  --card-foreground: var(--foreground);
-  --popover: var(--card);
-  --popover-foreground: var(--foreground);
-  --primary: var(--brand-600);
-  --primary-foreground: oklch(0.99 0.01 var(--brand-h));
-  --secondary: oklch(0.96 0.006 var(--brand-h));
-  --secondary-foreground: oklch(0.25 0.02 var(--brand-h));
-  --muted: oklch(0.96 0.006 var(--brand-h));
-  --muted-foreground: oklch(0.5 0.02 var(--brand-h));
-  --accent: oklch(0.96 0.006 var(--brand-h));
-  --accent-foreground: oklch(0.25 0.02 var(--brand-h));
+  --background: #f6faf7;
+  --foreground: #1d332c;
+  --card: #fcfefd;
+  --card-foreground: #1d332c;
+  --popover: #fcfefd;
+  --popover-foreground: #1d332c;
+  --primary: #1f684c;
+  --primary-foreground: #f7f5ed;
+  --secondary: #e4ebe0;
+  --secondary-foreground: #244c36;
+  --muted: #edf0e6;
+  --muted-foreground: #52665a;
+  --accent: #dce8dd;
+  --accent-foreground: #244c36;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.008 var(--brand-h));
-  --input: oklch(0.9 0.008 var(--brand-h));
-  --ring: var(--brand-500);
+  --border: #c4d0c2;
+  --input: #748575;
+  --ring: #2e7655;
 
-  --elevation-1: oklch(0.2 0.03 var(--brand-h) / 0.06);
-  --elevation-2: oklch(0.2 0.04 var(--brand-h) / 0.1);
-  --elevation-3: oklch(0.2 0.05 var(--brand-h) / 0.14);
-  --shadow-brand-color: oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.35);
+  --elevation-1: rgb(21 61 44 / 0.08);
+  --elevation-2: rgb(21 61 44 / 0.12);
+  --elevation-3: rgb(21 61 44 / 0.16);
+  --shadow-brand-color: rgb(31 104 76 / 0.18);
+  --portfolio-field-background: #153d2c;
+  --portfolio-field-foreground: #f4f4e9;
+  --portfolio-field-sage: #b8cfb0;
+  --portfolio-ruby: #c8102e;
 }
 
 .dark {
-  --background: oklch(0.16 0.012 var(--brand-h));
-  --foreground: oklch(0.96 0.006 var(--brand-h));
-  --card: oklch(0.2 0.014 var(--brand-h));
-  --card-foreground: var(--foreground);
-  --popover: var(--card);
-  --popover-foreground: var(--foreground);
-  --primary: var(--brand-400);
-  --primary-foreground: oklch(0.18 0.02 var(--brand-h));
-  --secondary: oklch(0.26 0.014 var(--brand-h));
-  --secondary-foreground: var(--foreground);
-  --muted: oklch(0.26 0.014 var(--brand-h));
-  --muted-foreground: oklch(0.7 0.02 var(--brand-h));
-  --accent: oklch(0.26 0.014 var(--brand-h));
-  --accent-foreground: var(--foreground);
+  --background: #111c16;
+  --foreground: #eef1e7;
+  --card: #1b2a21;
+  --card-foreground: #eef1e7;
+  --popover: #1b2a21;
+  --popover-foreground: #eef1e7;
+  --primary: #91caa7;
+  --primary-foreground: #142c20;
+  --secondary: #293f30;
+  --secondary-foreground: #deebd9;
+  --muted: #203329;
+  --muted-foreground: #b0bcac;
+  --accent: #304b3a;
+  --accent-foreground: #e3efe0;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: var(--brand-500);
+  --border: #3b5545;
+  --input: #728674;
+  --ring: #9dd7af;
 
-  --elevation-1: oklch(0 0 0 / 0.4);
-  --elevation-2: oklch(0 0 0 / 0.5);
-  --elevation-3: oklch(0 0 0 / 0.6);
-  --shadow-brand-color: oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.45);
+  --elevation-1: rgb(4 17 10 / 0.25);
+  --elevation-2: rgb(4 17 10 / 0.35);
+  --elevation-3: rgb(4 17 10 / 0.45);
+  --shadow-brand-color: rgb(8 29 18 / 0.35);
+  --portfolio-ruby: #c8102e;
 }
 
 @layer components {

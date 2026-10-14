@@ -341,10 +341,11 @@
   color: var(--muted-foreground);
 }
 .portfolio-section-heading > p {
-  max-width: 24rem;
+  max-width: 36rem;
   color: var(--muted-foreground);
   font-size: 0.8rem;
   line-height: 1.8;
+  text-wrap: pretty;
 }
 .portfolio-featured-grid {
   display: grid;
@@ -736,7 +737,8 @@
   font-size: clamp(2.8rem, 5.5vw, 5.4rem);
   line-height: 1.06;
   margin-block: 1rem 1.3rem;
-  max-width: 20ch;
+  max-width: 38ch;
+  text-wrap: balance;
 }
 @media (max-width: 600px) {
   .portfolio[lang="tt"] .case-heading h1 {
@@ -806,7 +808,7 @@
 }
 .case-reading-layout {
   display: grid;
-  grid-template-columns: 13rem minmax(0, 44rem);
+  grid-template-columns: 13rem minmax(0, 52rem);
   gap: 5rem;
   padding-block: 3rem;
 }
@@ -1427,7 +1429,7 @@
 }
 .story-layout {
   display: grid;
-  grid-template-columns: 13rem minmax(0, 46rem);
+  grid-template-columns: 13rem minmax(0, 52rem);
   gap: 4.5rem;
   align-items: start;
 }
@@ -1532,7 +1534,7 @@
     font-size: 2rem;
   }
   .portfolio-wordmark small {
-    max-width: 15rem;
+    max-width: 22rem;
   }
   .story-layout {
     gap: 2.5rem;
@@ -1556,7 +1558,7 @@
     font-size: 2rem;
   }
   .portfolio-wordmark small {
-    max-width: 13rem;
+    max-width: 20rem;
     font-size: 0.6rem;
   }
   .portfolio-nav-controls {
@@ -1701,7 +1703,7 @@
   padding-block: 4.5rem 3.75rem;
 }
 .bulachak-home-hero h1 {
-  max-width: 24ch;
+  max-width: 34ch;
   margin: 0;
   font-size: clamp(3rem, 6vw, 5.4rem);
   line-height: 1.04;
@@ -1739,10 +1741,14 @@
   font-size: clamp(1.9rem, 3vw, 2.8rem);
 }
 .bulachak-home-heading > p {
-  max-width: 37ch;
+  max-width: 54ch;
   font-size: 0.94rem;
   line-height: 1.7;
   color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+.bulachak-home-heading > p .inline-block {
+  display: inline-block;
 }
 .bulachak-branch-cards {
   display: grid;
@@ -1878,9 +1884,10 @@
   color: var(--portfolio-field-sage);
 }
 .bulachak-home-philosophy h2 {
-  max-width: 18ch;
+  max-width: 28ch;
   font-size: clamp(2rem, 3.5vw, 3.25rem);
   margin-top: 0.8rem;
+  text-wrap: balance;
 }
 .bulachak-home-philosophy p:not(.portfolio-eyebrow) {
   font-size: 1rem;
@@ -1909,10 +1916,11 @@
   font-size: clamp(1.7rem, 2.5vw, 2.3rem);
 }
 .bulachak-home-work p {
-  max-width: 50ch;
+  max-width: 58ch;
   font-size: 0.98rem;
   line-height: 1.8;
   color: var(--muted-foreground);
+  text-wrap: pretty;
 }
 .bulachak-home-work-section {
   border-top: 1px solid var(--border);
@@ -2006,7 +2014,7 @@
   text-align: center;
 }
 .bulachak-home-connect-inner {
-  max-width: 60ch;
+  max-width: 68ch;
   margin-inline: auto;
 }
 .bulachak-home-connect h2 {
@@ -2027,9 +2035,117 @@
   gap: 0.75rem;
   margin-top: 2rem;
 }
+.bulachak-launch-card {
+  margin-top: 2.25rem;
+  padding: 2rem;
+  border-radius: var(--portfolio-radius-surface);
+  background: var(--background);
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.bulachak-launch-header h3 {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  line-height: 1.25;
+  margin-top: 0.35rem;
+  text-wrap: balance;
+}
+.bulachak-launch-header p:last-child {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+  margin-top: 0.45rem;
+  text-wrap: pretty;
+}
+.bulachak-launch-form {
+  margin-top: 1.5rem;
+}
+.bulachak-launch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.bulachak-launch-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.bulachak-launch-field-wide {
+  grid-column: 1 / -1;
+}
+.bulachak-launch-field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+.bulachak-launch-select {
+  min-height: 2.5rem;
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--portfolio-radius-control);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  font-size: 0.875rem;
+}
+.bulachak-launch-select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.bulachak-launch-error {
+  font-size: 0.75rem;
+  color: var(--destructive);
+}
+.bulachak-launch-footer {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.bulachak-launch-footer p {
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+  max-width: 48ch;
+  text-wrap: pretty;
+}
+.bulachak-contact-strip {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+}
+.bulachak-contact-domain {
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--foreground);
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: var(--portfolio-radius-control);
+  background: var(--background);
+}
+.bulachak-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--foreground);
+  font-weight: 500;
+  text-decoration: none;
+}
+.bulachak-contact-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
 @media (max-width: 900px) {
   .bulachak-reciprocity-grid,
-  .bulachak-home-cases-grid {
+  .bulachak-home-cases-grid,
+  .bulachak-launch-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
   }
@@ -2038,6 +2154,9 @@
   }
   .bulachak-home-connect {
     padding: 2.25rem 1.5rem;
+  }
+  .bulachak-launch-card {
+    padding: 1.35rem;
   }
 }
 @media (max-width: 1000px) {
@@ -2215,7 +2334,7 @@
   border-bottom: 1px solid var(--border);
 }
 .bulachak-alignment h2 {
-  max-width: 32ch;
+  max-width: 44ch;
   font-family: inherit;
   font-size: 1.3rem;
   font-weight: 600;

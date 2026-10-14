@@ -10,21 +10,29 @@ The homepage introduces the three branches. The separate work directory presents
 
 ## Available language editions
 
-- [English homepage](/portfolio)
-- [Главная страница на русском](/ru/portfolio)
-- [Татарча баш бит](/tt/portfolio)
+- [English homepage](/)
+- [Главная страница на русском](/ru)
+- [Татарча баш бит](/tt)
 
 ## The three branches
 
-- [A4A: Agents 4 Athletes](/portfolio/a4a): Commercial engine. Developing practical tools and operations support for athletes, clubs, and sports organizations.
-- [P4P: Parafencing 4 Progress](/portfolio/p4p): Nonprofit branch in development. A vision for equipment, coaching, and support that makes participation easier.
-- [I4I: Immigrant 4 Immigrant](/portfolio/i4i): Immigrant support. Mutual support, shared knowledge, and cultural continuity across immigrant communities.
+- [A4A: Agents 4 Athletes](/a4a): Commercial engine. Developing practical tools and operations support for athletes, clubs, and sports organizations.
+- [P4P: Parafencing 4 Progress](/p4p): Nonprofit branch in development. A vision for equipment, coaching, and support that makes participation easier.
+- [I4I: Immigrant 4 Immigrant](/i4i): Immigrant support. Mutual support, shared knowledge, and cultural continuity across immigrant communities.
+
+## Operational diagnostics and intake
+
+- [15-Minute Operational Leak Audit](/audit)
+- [Pricing & Engagement Pillars](/pricing)
+- [Athlete & Coach Venture Intake](/intake/athlete)
+- [Federation & Adaptive Program Briefing](/intake/federation)
+- [Operational Masterclass & Workshop](/webinar)
 
 ## The founder's work
 
-- [English work directory](/portfolio/work)
-- [Проекты на русском](/ru/portfolio/work)
-- [Татарча проектлар](/tt/portfolio/work)
+- [English work directory](/work)
+- [Проекты на русском](/ru/work)
+- [Татарча проектлар](/tt/work)
 
 ## Readable text
 
@@ -42,10 +50,10 @@ The Markdown endpoint defaults to English when lang is omitted. Published langua
 
 ## Context and policies
 
-- [About Bulachak](/portfolio/about)
-- [Founder](/portfolio/founder)
-- [Privacy](/portfolio/privacy)
-- [Terms](/portfolio/terms)
+- [About Bulachak](/about)
+- [Founder](/founder)
+- [Privacy](/privacy)
+- [Terms](/terms)
 - [Sitemap](/sitemap.xml)
 - [Crawler rules](/robots.txt)
 

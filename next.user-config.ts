@@ -53,6 +53,30 @@ export const cspExtraSources: CspExtraSources = {
 export const userNextConfig: NextConfig = {
   // Keep local development inside this project when a parent has another lockfile.
   turbopack: { root: process.cwd() },
+  async redirects() {
+    return [
+      {
+        source: '/portfolio',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/:slug((?!content\\.md$).*)',
+        destination: '/:slug',
+        permanent: true,
+      },
+      {
+        source: '/:lang(ru|tt)/portfolio',
+        destination: '/:lang',
+        permanent: true,
+      },
+      {
+        source: '/:lang(ru|tt)/portfolio/:slug*',
+        destination: '/:lang/:slug*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export type ConfigPlugin = (config: NextConfig) => NextConfig;

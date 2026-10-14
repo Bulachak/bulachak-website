@@ -2,8 +2,11 @@
 import { bulachakHomeCopy } from '@/lib/business/bulachak-home';
 export const portfolioBrand = {
   name: 'Bulachak',
+  domain: 'bulachak.com',
   person: 'Kamilla Gafurzianova, OLY',
+  contactEmail: 'kgafurzianova@gmail.com',
   contactHref: 'https://www.linkedin.com/in/kamilla-gafurzianova/',
+  auditHref: '/audit',
   description: bulachakHomeCopy.en.description,
 };
 

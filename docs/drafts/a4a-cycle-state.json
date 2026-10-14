@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "1.0.0",
+  "framework": "Y Combinator Guide to Product Development (Michael Seibel)",
+  "sourceUrl": "https://www.ycombinator.com/library/4e-guide-to-product-development",
+  "updatedBy": "Antigravity",
+  "updatedAt": "2026-10-13T17:22:00-07:00",
+  "cycleNumber": 1,
+  "cycleName": "Cycle 1: October Masterclass & 15-Min Ops Diagnostic Launch",
+  "cycleWindow": "2026-10-13 to 2026-10-27",
+  "cycleLengthDays": 14,
+  "productLead": "Kamilla Gafurzianova, OLY",
+  "founderWeeklyHoursCap": "14–18 hrs/wk",
+  "activeGoalId": "GOAL_1",
+  "goals": [
+    {
+      "id": "GOAL_1",
+      "label": "Goal 1: Acquisition & Core Action",
+      "ycEquivalent": "Increasing New Users & Content Creation",
+      "summary": "Maximize 15-Min Ops Audit completions (/audit) and October Masterclass registrations (/webinar).",
+      "targetMetrics": [
+        "25–35 confirmed registrants on /webinar (POST /api/webinar/register)",
+        "10+ completed Operational Leak Audits on /audit (POST /api/audit)",
+        ">=30% conversion from Webinar confirmation screen to starting /audit"
+      ]
+    },
+    {
+      "id": "GOAL_2",
+      "label": "Goal 2: Activation & Commercial Conversion",
+      "ycEquivalent": "Increasing Core Engagement & Activation",
+      "summary": "Convert Audit & Intake leads (/intake/athlete, /intake/federation) into booked 1-on-1 walkthroughs and closed sprints.",
+      "targetMetrics": [
+        "5+ booked 15-minute diagnostic walkthrough calls from /audit",
+        "2 closed Turnkey Sport Ops Sprints ($2,800–$3,000) per month",
+        "100% response within 2 working days on /intake/athlete and /intake/federation"
+      ]
+    },
+    {
+      "id": "GOAL_3",
+      "label": "Goal 3: Delivery Velocity & Retention (I4I Loop)",
+      "ycEquivalent": "Increasing Retention",
+      "summary": "Standardize the 21-Day Sprint hand-off, >=10 hrs/wk relief verification, and I4I peer referral loop.",
+      "targetMetrics": [
+        "<=21 days from sprint kickoff to full credential hand-off",
+        ">=10 hours/week verified coach administrative time saved",
+        ">=1 peer club or diaspora business referral per completed sprint"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "F-01",
+      "title": "Persist Silent Launch, Audit, Webinar & Athlete Intake submissions to Google Sheets + Apps Script",
+      "category": "feature",
+      "grade": "HARD",
+      "selected": true,
+      "status": "DONE",
+      "owner": "Engineering Agent (Antigravity)",
+      "needToHave": "Forward POST /api/launch-leads, /api/audit, /api/webinar/register, and /api/athlete-leads to the bound Google Sheet + Apps Script Web App with Gmail notifications.",
+      "niceToHave": "Read-only GET /api/cycle-metrics summary endpoint returning aggregate counts by role and friction level.",
+      "analyticsSpec": "Rows logged in Google Sheets tabs (Silent_Launch_Leads, Audit_Diagnostics, Webinar_Registrations, Athlete_Intake)."
+    },
+    {
+      "id": "F-02",
+      "title": "1-Click Webinar & Silent Launch to Audit Pre-fill Handoff (/webinar & / -> /audit)",
+      "category": "feature",
+      "grade": "MEDIUM",
+      "selected": true,
+      "status": "DONE",
+      "owner": "Engineering Agent (Antigravity)",
+      "needToHave": "Pass name, email, phone, org, and source from /webinar and Silent Launch confirmation CTAs to /audit and pre-populate contact inputs.",
+      "niceToHave": "Auto-focus directly on the Operational Bottlenecks section when contact fields are pre-filled.",
+      "analyticsSpec": "Share of audit_diagnostics with source='webinar-confirmation' or 'silent-launch' divided by total leads (Target >= 30%)."
+    },
+    {
+      "id": "E-01",
+      "title": "A/B Experiment: Interactive Workload & Bottlenecks First on /audit",
+      "category": "experiment",
+      "grade": "MEDIUM",
+      "selected": true,
+      "status": "TODO",
+      "owner": "Engineering Agent",
+      "needToHave": "Reorder /audit form so Step 1 is Operational Load & Bottlenecks (slider + clickable bottleneck cards) and Step 2 is Organization & Contact Info.",
+      "niceToHave": "Live badge counter showing number of bottlenecks selected before submit.",
+      "analyticsSpec": "Audit completion conversion rate (POST /api/audit submissions per /audit visit) before vs. after section swap."
+    },
+    {
+      "id": "F-03",
+      "title": "Channel & UTM Attribution Capture (source / utm_source) on /, /webinar, and /audit",
+      "category": "feature",
+      "grade": "EASY",
+      "selected": true,
+      "status": "DONE",
+      "owner": "Engineering Agent (Antigravity)",
+      "needToHave": "Add optional source field to LaunchLeadCreate, AuditSubmission, and WebinarRegistration zod contracts; capture ?utm_source= or ?ref= on client pages.",
+      "niceToHave": "None (keep strictly minimal).",
+      "analyticsSpec": "Conversion breakdown across tg-dm, whatsapp-dm, diaspora-chat, linkedin, silent-launch, and webinar-confirmation."
+    },
+    {
+      "id": "M-01",
+      "title": "Externalize Webinar Zoom URL & Booking Calendar Link into a4a-config.ts",
+      "category": "maintenance",
+      "grade": "EASY",
+      "selected": true,
+      "status": "TODO",
+      "owner": "Podruga + Engineering Agent",
+      "needToHave": "Move hardcoded Zoom URL in /api/webinar/register and bookingUrl in /api/audit into src/lib/business/a4a-config.ts.",
+      "niceToHave": "Environment variable override support for custom booking links.",
+      "analyticsSpec": "Zero broken join links on live webinar day; tracked bookingUrl click-throughs."
+    },
+    {
+      "id": "M-02",
+      "title": "Inline Field-Level 400 Error Mapping (applyServerErrors) on /audit and /webinar",
+      "category": "maintenance",
+      "grade": "EASY",
+      "selected": true,
+      "status": "TODO",
+      "owner": "Engineering Agent (Antigravity)",
+      "needToHave": "Map 400 validation field errors inline on /audit and /webinar forms alongside toast feedback.",
+      "niceToHave": "Auto-scroll to first invalid field on mobile.",
+      "analyticsSpec": "Zero 400 validation drop-offs where mobile users fail to retry."
+    },
+    {
+      "id": "F-04",
+      "title": "Shareable Diagnostic Scorecard Permalink (/audit?id=...)",
+      "category": "feature",
+      "grade": "MEDIUM",
+      "selected": false,
+      "status": "DEFERRED",
+      "owner": "Unassigned",
+      "needToHave": "Allow club directors to share a read-only link of their Friction Score with board members.",
+      "niceToHave": "Printable PDF summary stylesheet.",
+      "analyticsSpec": "Secondary share views per generated audit."
+    },
+    {
+      "id": "M-03",
+      "title": "Convert /intake/federation from static mailto to persisted API form",
+      "category": "maintenance",
+      "grade": "MEDIUM",
+      "selected": false,
+      "status": "DEFERRED",
+      "owner": "Unassigned",
+      "needToHave": "Create FederationLead model and POST /api/federation-leads handler.",
+      "niceToHave": "Automated federation briefing deck attachment.",
+      "analyticsSpec": "Persisted institutional intake count (Target for a Goal 2 cycle)."
+    },
+    {
+      "id": "E-02",
+      "title": "Bilingual EN/RU Quick-Toggle on /webinar",
+      "category": "experiment",
+      "grade": "EASY",
+      "selected": false,
+      "status": "DEFERRED",
+      "owner": "Unassigned",
+      "needToHave": "Add EN/RU language toggle on /webinar for non-Russian-speaking US fencing club owners.",
+      "niceToHave": "Separate English webinar cohort waitlist.",
+      "analyticsSpec": "Share of webinar registrations from English toggle view."
+    }
+  ],
+  "qaChecklist": [
+    {
+      "id": "QA-01",
+      "surface": "Home & Navigation (/ and src/lib/nav.ts)",
+      "check": "Vertical hero sequence, Bulachak motto, 3 named branches (A4A, P4P, I4I), co-opetition copy, and top-nav CTAs (/audit, /intake/federation).",
+      "pass1": true,
+      "pass2": false
+    },
+    {
+      "id": "QA-02",
+      "surface": "Pricing Pillars (/pricing)",
+      "check": "All 3 tiers (P//01 $2.8k-$3k, P//02 $1k+8%, P//03 $15k-$18k), 4% P4P badge, 10-Hour Guarantee banner, and FAQ accordion.",
+      "pass1": true,
+      "pass2": false
+    },
+    {
+      "id": "QA-03",
+      "surface": "15-Min Ops Leak Audit (/audit -> POST /api/audit)",
+      "check": "Valid club inputs return Friction Score (10-100), Recoverable Hours, Annual Drag Cost, tailored prescriptions, and walkthrough CTA.",
+      "pass1": true,
+      "pass2": false
+    },
+    {
+      "id": "QA-04",
+      "surface": "October Masterclass Portal (/webinar -> POST /api/webinar/register)",
+      "check": "Registration confirmation card renders, .ics calendar file downloads cleanly, Concierge FAQ toggles work, and /audit CTA links cleanly.",
+      "pass1": true,
+      "pass2": false
+    },
+    {
+      "id": "QA-05",
+      "surface": "Athlete Solopreneur Intake (/intake/athlete -> POST /api/athlete-leads)",
+      "check": "5-field form maps 400 validation errors via applyServerErrors and returns 201 confirmation on valid submit.",
+      "pass1": true,
+      "pass2": false
+    },
+    {
+      "id": "QA-06",
+      "surface": "Federation Intake (/intake/federation)",
+      "check": "T//02 Federation & adaptive-program intake renders all 5 briefing fields, escalation policy card, and briefing action.",
+      "pass1": true,
+      "pass2": false
+    },
+    {
+      "id": "QA-07",
+      "surface": "Multilingual Portfolio, Typography & UI Invariants (/portfolio, /health)",
+      "check": "EN/RU/TT parity, /health returns 200, zero pill-shaped UI elements (rounded-full banned on buttons/badges), and zero-orphan typography.",
+      "pass1": true,
+      "pass2": false
+    }
+  ]
+}

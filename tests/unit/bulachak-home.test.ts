@@ -11,9 +11,9 @@ vi.mock('@/lib/site', () => ({ siteUrl: 'https://bulachak.example' }));
 
 const origin = 'https://bulachak.example';
 const workPaths = {
-  en: '/portfolio/work',
-  ru: '/ru/portfolio/work',
-  tt: '/tt/portfolio/work',
+  en: '/work',
+  ru: '/ru/work',
+  tt: '/tt/work',
 } as const;
 
 type JsonLdNode = {
@@ -117,7 +117,7 @@ describe('Bulachak homepage positioning', () => {
         en: workPaths.en,
         ru: workPaths.ru,
         tt: workPaths.tt,
-        'x-default': '/portfolio/work',
+        'x-default': '/work',
       });
       expect(metadata.openGraph?.url).toBe(workPaths[language]);
     },

@@ -123,7 +123,7 @@ export function PortfolioWork() {
             {featured.map((item, index) => (
               <article className="portfolio-feature-card" key={item.slug}>
                 <Link
-                  href={`/portfolio/${item.slug}`}
+                  href={`/${item.slug}`}
                   className="portfolio-visual-link"
                   tabIndex={-1}
                   aria-hidden="true"
@@ -138,7 +138,7 @@ export function PortfolioWork() {
                 </div>
                 <p className="portfolio-card-project">{item.subtitle.split(' · ')[0]}</p>
                 <h3>
-                  <Link href={`/portfolio/${item.slug}`}>
+                  <Link href={`/${item.slug}`}>
                     {item.title}
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </Link>
@@ -261,7 +261,7 @@ export function PortfolioWork() {
                       {statusName(item.status, language)}
                     </div>
                     <h3>
-                      <Link href={`/portfolio/${item.slug}`}>
+                      <Link href={`/${item.slug}`}>
                         {item.title}
                         <ArrowUpRight size={20} aria-hidden="true" />
                       </Link>
@@ -277,7 +277,7 @@ export function PortfolioWork() {
                   </div>
                   <Button asChild variant="ghost" size="icon" className="portfolio-row-arrow">
                     <Link
-                      href={`/portfolio/${item.slug}`}
+                      href={`/${item.slug}`}
                       aria-label={t('Read: ', 'Читать: ', 'Уку: ') + item.title}
                     >
                       <ArrowUpRight aria-hidden="true" />

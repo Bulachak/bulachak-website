@@ -22,16 +22,14 @@ import {
 export function PortfolioCase({ slug }: { slug: string }) {
   const { language, t } = usePortfolioLocale();
   const { items, loading, error, retry } = usePortfolio();
-  const [backHref, setBackHref] = useState('/portfolio/work#work');
+  const [backHref, setBackHref] = useState('/work#work');
   const [copied, setCopied] = useState(false);
   useEffect(() => {
     setBackHref(portfolioHref(language, '/work#work'));
     try {
       const saved = sessionStorage.getItem('bulachak-portfolio-return');
-      if (saved && /^\/(?:ru\/|tt\/)?portfolio(?:\/work)?(?:\?|#|$)/.test(saved))
-        setBackHref(
-          localizePortfolioHref(saved.replace(/(\/portfolio)(?=\?|#|$)/, '$1/work'), language),
-        );
+      if (saved && /^\/(?:ru\/|tt\/)?(?:portfolio\/)?work(?:\?|#|$)/.test(saved))
+        setBackHref(localizePortfolioHref(saved, language));
     } catch {
       /* The catalogue is still reachable when browser storage is unavailable. */
     }
@@ -96,9 +94,7 @@ export function PortfolioCase({ slug }: { slug: string }) {
         </p>
         {error && <Button onClick={retry}>{t('Try again', 'Повторить', 'Яңадан карау')}</Button>}
         <Button asChild variant="outline">
-          <Link href="/portfolio/work#work">
-            {t('All projects', 'Все проекты', 'Барлык проектлар')}
-          </Link>
+          <Link href="/work#work">{t('All projects', 'Все проекты', 'Барлык проектлар')}</Link>
         </Button>
       </main>
     );
@@ -169,7 +165,7 @@ export function PortfolioCase({ slug }: { slug: string }) {
               <span>{t('RELATED BRANCHES', 'СВЯЗАННЫЕ НАПРАВЛЕНИЯ', 'БӘЙЛЕ ЮНӘЛЕШЛӘР')}</span>
               <div className="flex flex-wrap gap-2">
                 {item.legs.map((leg) => (
-                  <Link key={leg} href={`/portfolio/${leg.toLowerCase()}`}>
+                  <Link key={leg} href={`/${leg.toLowerCase()}`}>
                     <Badge variant="outline">{leg}</Badge>
                   </Link>
                 ))}
@@ -310,7 +306,7 @@ export function PortfolioCase({ slug }: { slug: string }) {
                 <article key={entry.slug}>
                   <p className="portfolio-eyebrow">{categoryName(entry.category, language)}</p>
                   <h3>
-                    <Link href={`/portfolio/${entry.slug}`}>
+                    <Link href={`/${entry.slug}`}>
                       {entry.title}
                       <ArrowUpRight size={18} aria-hidden="true" />
                     </Link>

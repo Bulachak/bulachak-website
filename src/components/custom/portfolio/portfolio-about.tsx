@@ -87,7 +87,7 @@ export function PortfolioAbout({ page }: { page: StoryPage }) {
                 <p>{item.paragraphs[0]}</p>
                 <Button asChild variant="link">
                   <Link
-                    href={`/portfolio/${item.id}`}
+                    href={`/${item.id}`}
                     aria-label={`${item.id.toUpperCase()}: ${t('Read the story', 'Прочитать историю', 'Тулырак уку')}`}
                   >
                     {t('Read the story', 'Прочитать историю', 'Тулырак уку')}
@@ -104,13 +104,13 @@ export function PortfolioAbout({ page }: { page: StoryPage }) {
           aria-label={t('Explore Bulachak', 'Узнать больше о Bulachak', 'Bulachak белән танышу')}
         >
           <Button asChild variant="outline">
-            <Link href="/portfolio/founder">
+            <Link href="/founder">
               {t('About the founder', 'Об основательнице', 'Нигез салучы турында')}
               <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </Button>
           <Button asChild variant="link">
-            <Link href="/portfolio/work#work">
+            <Link href="/work#work">
               {t('Explore the projects', 'Посмотреть проекты', 'Проектларны карау')}
               <ArrowUpRight size={16} aria-hidden="true" />
             </Link>

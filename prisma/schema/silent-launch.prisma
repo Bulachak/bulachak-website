@@ -1,0 +1,55 @@
+// @polsia:user-owned — Silent Launch, Operational Audit, and Webinar persistence models.
+// App-owned schema file alongside framework-owned `_base.prisma` and `athlete-leads.prisma`.
+
+model LaunchLead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  branch    String
+  message   String?  @db.Text
+  locale    String   @default("en")
+  source    String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([email])
+  @@index([branch])
+  @@map("launch_leads")
+}
+
+model AuditDiagnostic {
+  id                         String   @id @default(cuid())
+  organizationName           String   @map("organization_name")
+  contactName                String   @map("contact_name")
+  email                      String
+  phone                      String?
+  sportOrNiche               String   @map("sport_or_niche")
+  athleteCount               String   @map("athlete_count")
+  weeklyAdminHours           Int      @map("weekly_admin_hours")
+  primaryBottlenecks         String[] @map("primary_bottlenecks")
+  notes                      String?  @db.Text
+  frictionScore              Int      @map("friction_score")
+  frictionLevel              String   @map("friction_level")
+  estimatedWeeklyHoursWasted Int      @map("estimated_weekly_hours_wasted")
+  estimatedAnnualCostOfDrag  Int      @map("estimated_annual_cost_of_drag")
+  recommendedPillar          String   @map("recommended_pillar")
+  source                     String?
+  createdAt                  DateTime @default(now()) @map("created_at")
+
+  @@index([email])
+  @@map("audit_diagnostics")
+}
+
+model WebinarAttendee {
+  id                 String   @id @default(cuid())
+  name               String
+  email              String
+  whatsappOrTelegram String?  @map("whatsapp_or_telegram")
+  role               String
+  organization       String?
+  biggestChallenge   String?  @map("biggest_challenge") @db.Text
+  source             String?
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  @@index([email])
+  @@map("webinar_attendees")
+}

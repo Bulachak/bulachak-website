@@ -11,6 +11,7 @@ import type { MetadataRoute } from 'next';
 import { caseStudies } from '@/lib/business/portfolio-content';
 import { getLocalizedPages } from '@/lib/business/portfolio-editorial';
 import { portfolioHref, publishedPortfolioLanguages } from '@/lib/portfolio-locale';
+import { actionRouteSlugs } from '@/lib/portfolio-metadata';
 import { siteUrl } from '@/lib/site';
 
 /** App-absolute `path` (e.g. /items/aatrox) + optional Next sitemap fields. */
@@ -21,6 +22,7 @@ export async function seoRoutes(): Promise<SeoRoute[]> {
     '',
     'work',
     ...getLocalizedPages('en').map((page) => page.slug),
+    ...actionRouteSlugs,
     ...caseStudies.map((item) => item.slug),
   ];
   return publishedPortfolioLanguages.flatMap((language) =>

@@ -17,7 +17,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { usePortfolioLocale } from '@/hooks/use-portfolio-locale';
-import { portfolioLegs } from '@/lib/portfolio-brand';
+import { portfolioBrand, portfolioLegs } from '@/lib/portfolio-brand';
 import {
   localizePortfolioHref,
   portfolioLanguageNames,
@@ -28,7 +28,7 @@ function Wordmark() {
   const { t } = usePortfolioLocale();
   return (
     <Link
-      href="/portfolio#portfolio-main"
+      href="/#portfolio-main"
       aria-label={t('Bulachak home', 'Главная страница Булачак', 'Булачакның баш бите')}
       className="portfolio-wordmark"
     >
@@ -79,11 +79,12 @@ export function PortfolioNav() {
   const [open, setOpen] = useState(false);
   const { language, t } = usePortfolioLocale();
   const links = [
-    { label: t('Home', 'Главная', 'Баш бит'), href: '/portfolio' },
-    { label: t('Branches', 'Направления', 'Юнәлешләр'), href: '/portfolio#branches' },
-    { label: t('About', 'О Bulachak', 'Bulachak турында'), href: '/portfolio/about' },
-    { label: t('Work', 'Проекты', 'Проектлар'), href: '/portfolio/work' },
-    { label: t('Founder', 'Основательница', 'Нигез салучы'), href: '/portfolio/founder' },
+    { label: t('Home', 'Главная', 'Баш бит'), href: '/' },
+    { label: t('Branches', 'Направления', 'Юнәлешләр'), href: '/#branches' },
+    { label: t('About', 'О Bulachak', 'Bulachak турында'), href: '/about' },
+    { label: t('Work', 'Проекты', 'Проектлар'), href: '/work' },
+    { label: t('Founder', 'Основательница', 'Нигез салучы'), href: '/founder' },
+    { label: t('Pricing', 'Тарифы', 'Форматлар'), href: '/pricing' },
   ];
   return (
     <header
@@ -106,6 +107,11 @@ export function PortfolioNav() {
           ))}
         </div>
         <div className="portfolio-nav-controls">
+          <Button asChild size="sm" className="hidden md:inline-flex">
+            <Link href={portfolioBrand.auditHref}>
+              {t('15-Min Audit', '15-мин аудит', '15 мин аудит')}
+            </Link>
+          </Button>
           <LanguageSwitch />
           <ThemeToggle
             label={t(
@@ -160,20 +166,22 @@ export function PortfolioNav() {
                 ))}
                 {portfolioLegs.map((leg) => (
                   <Button key={leg.code} asChild variant="ghost" className="min-h-12 justify-start">
-                    <Link
-                      href={`/portfolio/${leg.code.toLowerCase()}`}
-                      onClick={() => setOpen(false)}
-                    >
+                    <Link href={`/${leg.code.toLowerCase()}`} onClick={() => setOpen(false)}>
                       {leg.code} · {leg.names[language]}
                     </Link>
                   </Button>
                 ))}
+                <Button asChild className="mt-2 min-h-12 justify-center">
+                  <Link href={portfolioBrand.auditHref} onClick={() => setOpen(false)}>
+                    {t('Book 15-Min Audit', 'Записаться на 15-мин аудит', '15 мин аудитка язылу')}
+                  </Link>
+                </Button>
               </nav>
               <p className="mt-auto border-t border-border pt-6 text-sm">
                 {t(
                   'Value is grown, not extracted.',
-                  'Ценность нужно создавать, а не извлекать.',
-                  'Кыйммәтне бергә арттыру, үзеңә генә алмау.',
+                  'Ценность нужно создавать, а\u00A0не извлекать.',
+                  'Кыйммәтне бергә арттыру, үзеңә\u00A0генә алмау.',
                 )}
               </p>
             </SheetContent>
@@ -186,18 +194,22 @@ export function PortfolioNav() {
 export function PortfolioFooter() {
   const { language, t } = usePortfolioLocale();
   const links = [
-    { href: '/portfolio/about', label: t('About Bulachak', 'О Булачак', 'Булачак турында') },
-    { href: '/portfolio/work', label: t('Project work', 'Проекты', 'Проектлар') },
+    { href: '/about', label: t('About Bulachak', 'О Булачак', 'Булачак турында') },
+    { href: '/work', label: t('Project work', 'Проекты', 'Проектлар') },
     {
-      href: '/portfolio/founder',
-      label: t('About the founder', 'Об основательнице', 'Нигез салучы турында'),
+      href: '/founder',
+      label: t('About the founder', 'Об\u00A0основательнице', 'Нигез салучы турында'),
     },
     {
-      href: '/portfolio/privacy',
+      href: '/pricing',
+      label: t('Pricing & Pillars', 'Тарифы и форматы', 'Хезмәт форматлары'),
+    },
+    {
+      href: '/privacy',
       label: t('Privacy policy', 'Конфиденциальность', 'Шәхси мәгълүмат'),
     },
     {
-      href: '/portfolio/terms',
+      href: '/terms',
       label: t('Terms of use', 'Условия использования', 'Куллану шартлары'),
     },
   ];
@@ -210,10 +222,28 @@ export function PortfolioFooter() {
             <p className="mt-5 text-sm text-muted-foreground">
               {t(
                 'Value is grown, not extracted.',
-                'Ценность нужно создавать, а не извлекать.',
-                'Кыйммәтне бергә арттыру, үзеңә генә алмау.',
+                'Ценность нужно создавать, а\u00A0не извлекать.',
+                'Кыйммәтне бергә арттыру, үзеңә\u00A0генә алмау.',
               )}
             </p>
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+              <span className="font-mono text-foreground">{portfolioBrand.domain}</span>
+              <a
+                href={`mailto:${portfolioBrand.contactEmail}`}
+                className="hover:text-primary hover:underline"
+              >
+                {portfolioBrand.contactEmail}
+              </a>
+              <a
+                href={portfolioBrand.contactHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 hover:text-primary hover:underline"
+              >
+                {t('Founder LinkedIn', 'LinkedIn основательницы', 'Нигез салучы LinkedIn')}
+                <ArrowUpRight size={11} aria-hidden="true" />
+              </a>
+            </div>
           </div>
           <nav
             aria-label={t('Footer links', 'Ссылки внизу страницы', 'Бит ахырындагы сылтамалар')}
@@ -230,10 +260,22 @@ export function PortfolioFooter() {
             className="portfolio-footer-links"
           >
             {portfolioLegs.map((leg) => (
-              <Link key={leg.code} href={`/portfolio/${leg.code.toLowerCase()}`}>
+              <Link key={leg.code} href={`/${leg.code.toLowerCase()}`}>
                 {leg.code} · {leg.names[language]}
               </Link>
             ))}
+            <Link href={portfolioBrand.auditHref}>
+              {t('15-Min Ops Audit', '15-минутный аудит', '15 минутлык аудит')}
+            </Link>
+            <Link href="/intake/athlete">
+              {t('Athlete & Coach Intake', 'Анкета для спортсменов', 'Спортчылар анкетасы')}
+            </Link>
+            <Link href="/intake/federation">
+              {t('Federation Briefing', 'Брифинг для федераций', 'Федерацияләр өчен брифинг')}
+            </Link>
+            <Link href="/webinar">
+              {t('Operational Masterclass', 'Операционный практикум', 'Оештыру остаханәсе')}
+            </Link>
           </nav>
         </div>
         <div className="portfolio-footer-bottom">

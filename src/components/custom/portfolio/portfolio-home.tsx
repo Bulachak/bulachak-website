@@ -1,14 +1,15 @@
 // @polsia:user-owned: Bulachak's shared vision and three-branch homepage.
 'use client';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { PortfolioLink as Link } from '@/components/custom/portfolio/portfolio-link';
+import { SilentLaunchForm } from '@/components/custom/portfolio/silent-launch-form';
 import { Button } from '@/components/ui/button';
 import { usePortfolioLocale } from '@/hooks/use-portfolio-locale';
 import { bulachakHomeCopy } from '@/lib/business/bulachak-home';
 import { getLocalizedCases } from '@/lib/business/portfolio-catalogue';
-import { portfolioLegs } from '@/lib/portfolio-brand';
+import { portfolioBrand, portfolioLegs } from '@/lib/portfolio-brand';
 import { portfolioHref } from '@/lib/portfolio-locale';
 
 export function PortfolioHome() {
@@ -42,8 +43,14 @@ export function PortfolioHome() {
                   <ArrowDown size={17} aria-hidden="true" />
                 </Link>
               </Button>
+              <Button asChild variant="outline">
+                <Link href={portfolioBrand.auditHref}>
+                  {t('15-Min Ops Audit', '15-минутный аудит', '15 минутлык аудит')}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+              </Button>
               <Button asChild variant="link">
-                <Link href="/portfolio/about">
+                <Link href="/about">
                   {t('About Bulachak', 'О Bulachak', 'Bulachak турында')}
                   <ArrowUpRight size={16} aria-hidden="true" />
                 </Link>
@@ -55,7 +62,15 @@ export function PortfolioHome() {
         <section id="branches" className="bulachak-home-branches" aria-labelledby="branches-title">
           <div className="bulachak-home-heading">
             <h2 id="branches-title">{copy.branchesTitle}</h2>
-            <p>{copy.branchesIntro}</p>
+            <p>
+              {copy.branchesIntro.split('. ').map((part, index, arr) => (
+                <span key={part} className="inline-block">
+                  {part}
+                  {index < arr.length - 1 ? '.' : ''}
+                  {index < arr.length - 1 ? '\u0020' : ''}
+                </span>
+              ))}
+            </p>
           </div>
           <div className="bulachak-branch-cards">
             {portfolioLegs.map((leg) => {
@@ -75,7 +90,7 @@ export function PortfolioHome() {
                   <p className="bulachak-branch-description">{branch.description}</p>
                   {branch.pledge ? <p className="bulachak-branch-pledge">{branch.pledge}</p> : null}
                   <Button asChild variant="link">
-                    <Link href={`/portfolio/${leg.code.toLowerCase()}`}>
+                    <Link href={`/${leg.code.toLowerCase()}`}>
                       {branch.linkLabel}
                       <ArrowUpRight size={17} aria-hidden="true" />
                     </Link>
@@ -125,7 +140,7 @@ export function PortfolioHome() {
               <p>{copy.philosophyText}</p>
               <p className="bulachak-home-alignment">{copy.alignment}</p>
               <Button asChild variant="link">
-                <Link href="/portfolio/about">
+                <Link href="/about">
                   {copy.philosophyLink}
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </Link>
@@ -157,13 +172,13 @@ export function PortfolioHome() {
               <p>{copy.workText}</p>
               <div className="bulachak-home-actions">
                 <Button asChild variant="outline">
-                  <Link href="/portfolio/work">
+                  <Link href="/work">
                     {copy.workLink}
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild variant="link">
-                  <Link href="/portfolio/founder">
+                  <Link href="/founder">
                     {copy.founderLink}
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </Link>
@@ -195,7 +210,7 @@ export function PortfolioHome() {
                     </div>
                     <p className="bulachak-home-case-summary">{cs.summary}</p>
                     <Button asChild variant="link" className="bulachak-home-case-link">
-                      <Link href={`/portfolio/${cs.slug}`}>
+                      <Link href={`/${cs.slug}`}>
                         {t('Read case study', 'Читать кейс', 'Кейсны уку')}
                         <ArrowUpRight size={15} aria-hidden="true" />
                       </Link>
@@ -214,8 +229,17 @@ export function PortfolioHome() {
             </p>
             <h2 id="connect-title">{copy.contactTitle}</h2>
             <p className="bulachak-home-connect-subtitle">{copy.contactSubtitle}</p>
+
+            <SilentLaunchForm />
+
             <div className="bulachak-home-connect-actions">
               <Button asChild size="lg" className="shadow-brand">
+                <Link href={portfolioBrand.auditHref}>
+                  {t('15-Min Ops Audit', '15-минутный аудит', '15 минутлык аудит')}
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
                 <Link href="/intake/federation">
                   {copy.contactActionBriefing}
                   <ArrowUpRight size={17} aria-hidden="true" />
@@ -228,11 +252,30 @@ export function PortfolioHome() {
                 </Link>
               </Button>
               <Button asChild variant="ghost" size="lg">
-                <Link href="/portfolio/about">
+                <Link href="/about">
                   {copy.contactActionAbout}
                   <ArrowUpRight size={16} aria-hidden="true" />
                 </Link>
               </Button>
+            </div>
+
+            <div className="bulachak-contact-strip">
+              <span className="bulachak-contact-domain">{portfolioBrand.domain}</span>
+              <span aria-hidden="true">·</span>
+              <a href={`mailto:${portfolioBrand.contactEmail}`} className="bulachak-contact-link">
+                <Mail size={14} aria-hidden="true" />
+                <span>{portfolioBrand.contactEmail}</span>
+              </a>
+              <span aria-hidden="true">·</span>
+              <a
+                href={portfolioBrand.contactHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bulachak-contact-link"
+              >
+                <span>{portfolioBrand.person} · LinkedIn</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
             </div>
           </div>
         </section>
