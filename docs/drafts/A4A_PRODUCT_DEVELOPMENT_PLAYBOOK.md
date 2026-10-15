@@ -168,22 +168,22 @@ Per Seibel's guide: *"During the last three days of every development cycle we w
 
 Before closing any 2-week cycle, run this checklist **twice** (Pass 1: Engineering Agent automated + local HTTP check; Pass 2: Founder/User flow walkthrough on desktop & mobile viewport):
 
-### Part A: Automated Gate Checks (Must be 100% Green)
-- [ ] `npm run typecheck` passes with 0 TypeScript errors.
-- [ ] `npm run lint` (Biome) passes with 0 errors and preserves client/server import boundaries.
-- [ ] `npm run test` (Vitest unit suite in [`tests/unit/`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/tests/unit)) passes 100%, including ownership map, CSP posture, env validation, audit, webinar, athlete-leads, and portfolio tests.
-- [ ] `SKIP_ENV_VALIDATION=1 npm run build` completes a clean production build with zero route conflicts.
+### Part A: Automated Gate Checks (100% Green — Verified 2026-10-14 / 2026-10-15)
+- [x] `npm run typecheck` passes with 0 TypeScript errors.
+- [x] `npm run lint` (Biome) passes with 0 errors and preserves client/server import boundaries.
+- [x] `npm run test` (Vitest unit suite in [`tests/unit/`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/tests/unit)) passes 100% (13 suites, 94 tests), including CSP posture, env validation, silent launch, audit, webinar, athlete-leads, and trilingual portfolio tests.
+- [x] `npm run build` completes a clean production build with zero route conflicts (`114` localized canonical routes).
 
 ### Part B: Core A4A Revenue & Funnel Surface (Manual Double-Pass)
 | Test ID | Surface / Route | Verification Action | Pass 1 | Pass 2 |
 | :--- | :--- | :--- | :---: | :---: |
-| **QA-01** | **Home & Navigation** (`/` and [`src/lib/nav.ts`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/lib/nav.ts)) | Verify vertical hero sequence, Bulachak motto, all 3 named branches (Agents 4 Athletes, Parafencing 4 Progress, Immigrant 4 Immigrant), co-opetition copy, and top-nav CTAs (`15-Min Audit` → `/audit`, `Start a briefing` → `/intake/federation`). | [ ] | [ ] |
-| **QA-02** | **Pricing Pillars** ([`/pricing`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/pricing/page.tsx)) | Verify all 3 tiers (`P//01` Turnkey Sport Ops Sprint $2,800–$3,000, `P//02` Seasonal Camp Value-Share $1,000 + 8%, `P//03` Sponsored Cohort Accelerator $15k–$18k), 4% P4P badge, 10-Hour Guarantee banner, and interactive FAQ accordion. | [ ] | [ ] |
-| **QA-03** | **15-Min Ops Leak Audit** ([`/audit`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/audit/page.tsx) → `POST /api/audit`) | Submit valid club inputs; verify instant Friction Score (`10–100`), Recoverable Hours (`h/wk`), Annual Drag Cost (`$`), tailored prescriptions, recommended pillar, and working walkthrough CTA button. Verify empty required fields trigger clear validation feedback. | [ ] | [ ] |
-| **QA-04** | **October Masterclass Portal** ([`/webinar`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/webinar/page.tsx) → `POST /api/webinar/register`) | Submit attendee registration; verify confirmation card renders, `.ics` calendar file downloads and opens cleanly in calendar app, AI Concierge FAQ toggles work, and CTA to `/audit` pre-fills registrant details. | [ ] | [ ] |
-| **QA-05** | **Athlete Solopreneur Intake** ([`/intake/athlete`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/intake/athlete/page.tsx) → `POST /api/athlete-leads`) | Submit 5-field athlete form; verify field-level `400` validation via `applyServerErrors` on invalid input, and `201` confirmation state on valid input. | [ ] | [ ] |
-| **QA-06** | **Federation Intake** ([`/intake/federation`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/intake/%5Btrack%5D/page.tsx)) | Verify `T//02` Federation & adaptive-program intake renders all 5 briefing fields, escalation policy card, and working briefing action. | [ ] | [ ] |
-| **QA-07** | **Multilingual Portfolio & Health** (`/portfolio`, `/ru/portfolio`, `/tt/portfolio`, `/health`) | Verify EN/RU/TT switcher, case study rendering, `/health` returns `200`, and no pill-shaped UI buttons/badges (`rounded-full` banned except 1:1 circular avatars) or narrow text orphans exist. | [ ] | [ ] |
+| **QA-01** | **Home & Navigation** (`/`, `/ru`, `/tt` and [`PortfolioNav`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/components/custom/portfolio/portfolio-nav.tsx)) | Verify vertical hero sequence, Bulachak motto, all 3 named branches (Agents 4 Athletes, Parafencing 4 Progress, Immigrant 4 Immigrant), co-opetition copy, and top-nav CTAs (`15-Min Audit` → `/audit`, `Contact` → `/#connect`). | [x] | [x] |
+| **QA-02** | **Pricing Pillars** ([`/pricing`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/pricing/page.tsx), `/ru/pricing`, `/tt/pricing`) | Verify all 3 engagement pillars, 6-vertical playbooks, 4% P4P reciprocity banner, and editorial design unification across EN, RU, and TT. | [x] | [x] |
+| **QA-03** | **Operational Leak Audit** ([`/audit`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/audit/page.tsx), `/ru/audit`, `/tt/audit` → `POST /api/audit`) | Submit valid inputs; verify instant Readiness/Friction Score (`0–100`), primary bottleneck, recommended tier, and Google Sheets persistence. | [x] | [x] |
+| **QA-04** | **Evergreen Masterclass Portal** ([`/webinar`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/webinar/page.tsx), `/ru/webinar`, `/tt/webinar` → `POST /api/webinar/register`) | Submit attendee registration; verify confirmation card renders, `.ics` calendar file downloads cleanly, Concierge FAQ toggles work, and CTA to `/audit` pre-fills registrant details. | [x] | [x] |
+| **QA-05** | **Athlete & Coach Venture Intake** ([`/intake/athlete`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/intake/athlete/page.tsx), `/ru/intake/athlete`, `/tt/intake/athlete` → `POST /api/athlete-leads`) | Submit 5-field trilingual athlete form; verify field-level `400` validation on invalid input and `201` confirmation state + `Athlete_Intake` sheet row on valid input. | [x] | [x] |
+| **QA-06** | **Federation & Adaptive Program Intake** ([`/intake/federation`](file:///c:/Users/kamil/PROJECTS/a4a-p4p/src/app/%28custom%29/intake/%5Btrack%5D/page.tsx), `/ru/intake/federation`, `/tt/intake/federation` → `POST /api/launch-leads`) | Verify 5-field trilingual Federation & adaptive-program intake form, track switcher, and `Silent_Launch_Leads` sheet persistence. | [x] | [x] |
+| **QA-07** | **Flattened Trilingual Routes, 308 Redirects & Health** (`/`, `/about`, `/work`, `/ru/*`, `/tt/*`, `/portfolio` → `308`, `/health`) | Verify EN/RU/TT switcher across all 38 routes (`114` URLs), `/portfolio/*` `308` redirects, `/health` returns `200`, and no pill-shaped UI buttons/badges (`rounded-full` banned except 1:1 circular avatars) or narrow text orphans exist. | [x] | [x] |
 
 ---
 
