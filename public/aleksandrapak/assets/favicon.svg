@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Warm Sketchbook Paper Background with Soft Blush Border (Zero-Pill Architectural 14px Radius) -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#FAF5EE" stroke="#D99AA5" stroke-width="2.5"/>
+  <!-- Subtle Lined Notebook Rules -->
+  <line x1="8" y1="20" x2="56" y2="20" stroke="#E4D2C7" stroke-width="1"/>
+  <line x1="8" y1="34" x2="56" y2="34" stroke="#E4D2C7" stroke-width="1"/>
+  <line x1="8" y1="48" x2="56" y2="48" stroke="#E4D2C7" stroke-width="1"/>
+  <!-- Signature Pastel Pink Marker Highlight Brushstroke -->
+  <rect x="9" y="24" width="46" height="18" rx="5" fill="#F6C5CC"/>
+  <!-- Botanical Sprig Leaf Accent Top-Right -->
+  <path d="M44 16 C48 11, 53 9, 56 8" stroke="#D99AA5" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+  <path d="M48 13 C46 9, 49 6, 52 8 C51 11, 49 12, 48 13 Z" fill="#D99AA5" fill-opacity="0.45"/>
+  <!-- Editorial Serif Monogram АП -->
+  <text x="32" y="41" text-anchor="middle" fill="#6E282B" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700" letter-spacing="-0.5">АП</text>
+</svg>

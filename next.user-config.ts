@@ -45,7 +45,7 @@ export const cspExtraSources: CspExtraSources = {
   frameSrc: [],
   connectSrc: [],
   mediaSrc: [],
-  fontSrc: [],
+  fontSrc: ['https://fonts.gstatic.com'],
   imgSrc: [],
 };
 
@@ -74,6 +74,16 @@ export const userNextConfig: NextConfig = {
         source: '/:lang(ru|tt)/portfolio/:slug*',
         destination: '/:lang/:slug*',
         permanent: true,
+      },
+      {
+        source: '/:lang(ru|tt)/aleksandrapak',
+        destination: '/aleksandrapak?lang=ru',
+        permanent: false,
+      },
+      {
+        source: '/:lang(ru|tt)/anastasiablodgett',
+        destination: '/anastasiablodgett?lang=ru',
+        permanent: false,
       },
     ];
   },
