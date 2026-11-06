@@ -48,6 +48,7 @@ Every route below is served in English at `/<slug>`, Russian at `/ru/<slug>`, an
 | `/intake/athlete` (`/ru/intake/athlete`, `/tt/intake/athlete`) | **Athlete & Coach Venture Intake (`A4A`)** — Trilingual 5-field operational intake form for athlete-founders, head coaches, and academy directors (`AthleteIntakeForm`). |
 | `/intake/federation` (`/ru/intake/federation`, `/tt/intake/federation`) | **Federation & Adaptive Program Briefing (`A4A × P4P`)** — Trilingual 5-field institutional briefing form for NGBs, municipal departments, and adaptive parafencing programs (`FederationIntakeForm`). |
 | `/webinar` (`/ru/webinar`, `/tt/webinar`) | **Evergreen I4I × A4A Operational Masterclass** — Trilingual workshop portal featuring Anvar Tuykin & Kamilla Gafurzianova, OLY, live cohort registration, instant `.ics` calendar file download, and interactive FAQ concierge. |
+| `/aleksandrapak` & `/anastasiablodgett` | **I4I Bespoke Link-in-Bio Hubs** — Brand-expressive Link-in-Bio pages hosted for I4I founders Aleksandra Pak and Anastasia Blodgett with `1200×630` OpenGraph cards and custom favicons. |
 | `/portfolio/content.md` & `/llms.txt` | **AI & Plain-Text Discovery** — Machine-readable Markdown editions (`?lang=en\|ru\|tt&slug=...`) and LLM index. |
 
 ---
@@ -55,7 +56,8 @@ Every route below is served in English at `/<slug>`, Russian at `/ru/<slug>`, an
 ## Documentation Suite
 
 - **[`docs/ARCHITECTURE_AND_CURRENT_STATE.md`](./docs/ARCHITECTURE_AND_CURRENT_STATE.md)** — **Start here.** Canonical baseline of current production architecture, route & API inventory, editorial guardrails, and CRM schema.
-- **[`docs/REBUILD_PLAN_AND_CHANGELOG.md`](./docs/REBUILD_PLAN_AND_CHANGELOG.md)** — Detailed `/grill-me` design decisions (D1–D6) and complete file-by-file change log of the October 2026 rebuild.
+- **[`docs/REBUILD_PLAN_AND_CHANGELOG.md`](./docs/REBUILD_PLAN_AND_CHANGELOG.md)** — Detailed `/grill-me` design decisions (D1–D6), 90-file commit manifest, and post-rebuild changelog.
+- **[`docs/COMPETITOR_INTELLIGENCE_TRACKER.md`](./docs/COMPETITOR_INTELLIGENCE_TRACKER.md)** — 4-tier competitive landscape matrix & Triple Threat Ventures (`Br3kaway`) deep-dive dossier (mirrored to native Google Sheet `1dSgBmiuzOb_zT58on_o2AmomXiBNqTmWry1YfmuQcjk` & Google Doc `1BryQ-sS-ASk9mXuofarqvdlHIZfViyTSXdKwmAR0KQo`).
 - **[`AGENTS.md`](./AGENTS.md)** — Engineering conventions, brand identity constants, trilingual localization rules, and UI/typography invariants.
 - **[`docs/drafts/A4A_PRODUCT_DEVELOPMENT_PLAYBOOK.md`](./docs/drafts/A4A_PRODUCT_DEVELOPMENT_PLAYBOOK.md)** — Commercial 3-pillar framework, risk reversal guarantee, and silent launch log.
 - **[`docs/portfolio/BUILD-REPORT.md`](./docs/portfolio/BUILD-REPORT.md)** — Historical verification report for the trilingual portfolio and case study catalogue.

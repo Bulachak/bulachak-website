@@ -3,7 +3,7 @@ title: "Bulachak (bulachak.com) — Rebuild Plan, Design Decisions & Detailed Ch
 created_by: Antigravity
 date_created: 2026-10-14
 updated_by: Antigravity
-last_updated_on: 2026-10-15
+last_updated_on: 2026-11-05
 status: completed
 ---
 
@@ -224,3 +224,20 @@ Every single file in commit `ee938f80c868f3bd77d85d3068e69a7ac5b68b15` (`90 file
     - `https://bulachak.com/portfolio/work` $\rightarrow$ `/work`
     - `https://bulachak.com/ru/portfolio/a4a` $\rightarrow$ `/ru/a4a`
   - `404 Not Found`: `https://bulachak.com/example` (legacy template route removed)
+
+---
+
+## 5. Post-Rebuild Commits & Final Task Closeout (`2026-10-19` – `2026-11-05`)
+
+1. **Documentation & Manifest Sync (`cc8eb94` — `2026-10-15`):**
+   - Added the 90-file commit manifest (`ee938f8`), double-pass QA completion checkmarks in [`docs/drafts/A4A_PRODUCT_DEVELOPMENT_PLAYBOOK.md`](drafts/A4A_PRODUCT_DEVELOPMENT_PLAYBOOK.md), and cycle ledger `v1.1.0` in [`docs/drafts/a4a-cycle-state.json`](drafts/a4a-cycle-state.json).
+2. **I4I Bespoke Link-in-Bio Hosting (`4af006a` — `2026-10-19`, `23 files changed`):**
+   - Hosted two bespoke I4I founder Link-in-Bio pages directly on `bulachak.com` with `1200×630` OpenGraph social cards and custom brand favicons:
+     - [`/aleksandrapak`](../src/app/(custom)/aleksandrapak/route.ts) (`public/aleksandrapak/assets/*`, `src/lib/bio-pages/aleksandrapak-html.ts`)
+     - [`/anastasiablodgett`](../src/app/(custom)/anastasiablodgett/route.ts) (`public/anastasiablodgett/assets/*`, `src/lib/bio-pages/anastasiablodgett-html.ts`)
+   - Updated [`next.user-config.ts`](../next.user-config.ts) static asset/header allowances for the hosted bio bundles.
+3. **Competitive Intelligence Registry & Final Closeout Audit (`2026-11-05`):**
+   - Committed [`docs/COMPETITOR_INTELLIGENCE_TRACKER.md`](COMPETITOR_INTELLIGENCE_TRACKER.md) (4-tier market landscape matrix + deep-dive dossier on Triple Threat Ventures Group, Inc. / `Br3kaway`) and cross-linked its native Google Workspace mirrors in `Research_A4A` (`1dovMIm3UatgSZPZLpcy9aoxD6ZK47I3r`):
+     - Google Sheet: `1dSgBmiuzOb_zT58on_o2AmomXiBNqTmWry1YfmuQcjk`
+     - Google Doc: `1BryQ-sS-ASk9mXuofarqvdlHIZfViyTSXdKwmAR0KQo`
+   - Re-verified live `HTTP 200` status across `https://bulachak.com/`, `/health`, `/audit`, `/pricing`, `/intake/athlete`, `/intake/federation`, `/webinar`, `/aleksandrapak`, and `/anastasiablodgett`, and verified all 4 Google Sheets CRM tabs (`19f83qdQCUhe4dWvOLSWmc5_xBNLmfUm8I4_kk-L5r2o`) via `gws sheets`.

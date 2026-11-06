@@ -3,15 +3,15 @@ title: "Bulachak (bulachak.com) — Current State, Architecture & Rebuild Baseli
 created_by: Antigravity
 date_created: 2026-10-14
 updated_by: Antigravity
-last_updated_on: 2026-10-14
+last_updated_on: 2026-11-05
 status: canonical_baseline
 ---
 
 # Bulachak (`bulachak.com`) — Current State, Architecture & Rebuild Baseline
 
-> **Purpose of this document:** This document records the canonical state of the **Bulachak** (`https://bulachak.com`) codebase, live production infrastructure, flattened trilingual route map (`114` localized routes), Google Sheets + Apps Script CRM pipeline, and editorial guardrails as of **October 14, 2026** (following the completion of the October 14 platform rebuild).
+> **Purpose of this document:** This document records the canonical state of the **Bulachak** (`https://bulachak.com`) codebase, live production infrastructure, flattened trilingual route map (`114` localized routes + bespoke I4I Link-in-Bio routes), Google Sheets + Apps Script CRM pipeline, and editorial guardrails as of **November 5, 2026**.
 >
-> 📋 **For the itemized file-by-file change log of the October 14, 2026 rebuild, see [`docs/REBUILD_PLAN_AND_CHANGELOG.md`](./REBUILD_PLAN_AND_CHANGELOG.md).**
+> 📋 **For the itemized file-by-file change log of the platform rebuild and subsequent commits, see [`docs/REBUILD_PLAN_AND_CHANGELOG.md`](./REBUILD_PLAN_AND_CHANGELOG.md).**
 
 ---
 
@@ -96,6 +96,7 @@ flowchart TD
 | `/intake/athlete`<br>`/ru/intake/athlete`<br>`/tt/intake/athlete` | [`src/app/(custom)/intake/athlete/page.tsx`](../src/app/(custom)/intake/athlete/page.tsx)<br>[`src/app/(custom)/[language]/[[...path]]/page.tsx`](../src/app/(custom)/[language]/[[...path]]/page.tsx) | [`IntakeView`](../src/components/custom/intake/intake-view.tsx), [`AthleteIntakeForm`](../src/components/custom/intake/athlete-form.tsx) | `en`, `ru`, `tt` | **Athlete & Coach Venture Intake (`A4A`).** Trilingual 5-field operational intake form for athlete-founders, head coaches, and academy directors. |
 | `/intake/federation`<br>`/ru/intake/federation`<br>`/tt/intake/federation` | [`src/app/(custom)/intake/[track]/page.tsx`](../src/app/(custom)/intake/[track]/page.tsx)<br>[`src/app/(custom)/[language]/[[...path]]/page.tsx`](../src/app/(custom)/[language]/[[...path]]/page.tsx) | [`IntakeView`](../src/components/custom/intake/intake-view.tsx), [`FederationIntakeForm`](../src/components/custom/intake/federation-form.tsx) | `en`, `ru`, `tt` | **Federation & Adaptive Program Briefing (`A4A × P4P`).** Trilingual 5-field institutional briefing form for federations, NGBs, municipal departments, and adaptive parafencing programs. |
 | `/webinar`<br>`/ru/webinar`<br>`/tt/webinar` | [`src/app/(custom)/webinar/page.tsx`](../src/app/(custom)/webinar/page.tsx)<br>[`src/app/(custom)/[language]/[[...path]]/page.tsx`](../src/app/(custom)/[language]/[[...path]]/page.tsx) | [`WebinarView`](../src/components/custom/webinar/webinar-view.tsx) | `en`, `ru`, `tt` | **Evergreen I4I × A4A Operational Masterclass.** Trilingual workshop portal featuring Anvar Tuykin & Kamilla Gafurzianova, OLY, live cohort registration, `.ics` calendar download, and interactive FAQ concierge. |
+| `/aleksandrapak`<br>`/anastasiablodgett` | [`src/app/(custom)/aleksandrapak/route.ts`](../src/app/(custom)/aleksandrapak/route.ts)<br>[`src/app/(custom)/anastasiablodgett/route.ts`](../src/app/(custom)/anastasiablodgett/route.ts) | [`aleksandrapak-html.ts`](../src/lib/bio-pages/aleksandrapak-html.ts)<br>[`anastasiablodgett-html.ts`](../src/lib/bio-pages/anastasiablodgett-html.ts) | `en` / bespoke | **I4I Bespoke Link-in-Bio Pages (`4af006a`).** Brand-expressive Link-in-Bio hubs hosted for I4I founders Aleksandra Pak (`@howlovebegins` · `@aaagency_ai`) and Anastasia Blodgett (`17hands.ai` · `@velvet117`), each wired with bespoke `1200×630` OpenGraph cards and custom brand favicons. |
 | `/portfolio`, `/portfolio/[slug]`, `/[lang]/portfolio/*` | [`next.user-config.ts`](../next.user-config.ts)<br>[`src/app/(custom)/portfolio/page.tsx`](../src/app/(custom)/portfolio/page.tsx) | Permanent `308` Redirects | `en`, `ru`, `tt` | **Legacy Redirects.** All historical `/portfolio/*` URLs redirect (`308`) to their flattened canonical equivalents. |
 
 ### 3.2 API & Machine-Readable Endpoints
@@ -205,6 +206,7 @@ All 6 architectural decisions from the `/grill-me` design review have been imple
 | [`AGENTS.md`](../AGENTS.md) | Engineering Rules | Mandatory architectural, brand, trilingual, data-plane, and UI/typography rules for AI coding agents. |
 | [`docs/ARCHITECTURE_AND_CURRENT_STATE.md`](./ARCHITECTURE_AND_CURRENT_STATE.md) | **Canonical Baseline** | **This document.** Full architectural map, route & API inventory, CRM schema, and guardrails. |
 | [`docs/REBUILD_PLAN_AND_CHANGELOG.md`](./REBUILD_PLAN_AND_CHANGELOG.md) | **Rebuild Changelog** | Detailed `/grill-me` design decisions (D1–D6) and itemized file-by-file change log of the October 14, 2026 rebuild. |
+| [`docs/COMPETITOR_INTELLIGENCE_TRACKER.md`](./COMPETITOR_INTELLIGENCE_TRACKER.md) | **Competitive Intelligence** | 4-tier competitor landscape matrix and deep-dive dossier on Triple Threat Ventures Group, Inc. (`Br3kaway` / `Breakaway.ai`). |
 | [`docs/drafts/A4A_PRODUCT_DEVELOPMENT_PLAYBOOK.md`](./drafts/A4A_PRODUCT_DEVELOPMENT_PLAYBOOK.md) | Product & GTM Playbook | 3-Pillar A4A commercial model, 10-Hour Guarantee, 4% P4P pledge, and silent launch execution log. |
 | [`docs/drafts/OCTOBER_WEBINAR_END_TO_END_PLAYBOOK.md`](./drafts/OCTOBER_WEBINAR_END_TO_END_PLAYBOOK.md) | Event Playbook | Script, timing, and funnel architecture for the operational masterclass. |
 | [`docs/drafts/ANVAR_QUESTIONS_STRATEGIC_RESPONSES.md`](./drafts/ANVAR_QUESTIONS_STRATEGIC_RESPONSES.md) | Partner Alignment | Strategic responses and co-hosting alignment notes with Anvar Tuykin. |
