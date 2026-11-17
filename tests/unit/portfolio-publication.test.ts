@@ -88,7 +88,10 @@ describe('portfolio language publication boundary', () => {
   });
 
   it('advertises all 114 localized editorial and action routes across en, ru, and tt', async () => {
-    const routes = await seoRoutes();
+    const all = await seoRoutes();
+    // The English-only P4P Parafencing Dictionary is the one route outside the trilingual set.
+    expect(all.filter((route) => route.path === '/p4p/dictionary')).toHaveLength(1);
+    const routes = all.filter((route) => route.path !== '/p4p/dictionary');
     expect(routes).toHaveLength(114);
     expect(new Set(routes.map((route) => route.path)).size).toBe(114);
     for (const route of routes) {

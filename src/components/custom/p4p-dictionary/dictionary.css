@@ -1,0 +1,847 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: the dictionary is a full-screen page that must win over the site's global styles. */
+/* biome-ignore-all lint/style/noDescendingSpecificity: rules are grouped by component, then by screen size. */
+/* created_by: Claude Code (Fable 5.2); date_created: 2026-11-13 */
+/* updated_by: Claude Code (Fable 5.2); last_updated_on: 2026-11-14 */
+/* Parafencing dictionary: a full-screen paper-grey page with a term cloud and an entry panel.
+   Corners follow the project rule (no pill shapes): 8px controls, 12px bubbles. */
+.pfd {
+  --pfd-paper-rgb: 238 238 236;
+  --pfd-panel-rgb: 242 242 240;
+  --pfd-ink-rgb: 26 26 25;
+  --pfd-paper: rgb(var(--pfd-paper-rgb));
+  --pfd-panel: rgb(var(--pfd-panel-rgb));
+  --pfd-ink: rgb(var(--pfd-ink-rgb));
+  --pfd-soft: rgb(var(--pfd-ink-rgb) / 0.84);
+  --pfd-quiet: rgb(var(--pfd-ink-rgb) / 0.74);
+  --pfd-line: rgb(var(--pfd-ink-rgb) / 0.16);
+  --pfd-line-strong: rgb(var(--pfd-ink-rgb) / 0.34);
+  --pfd-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --pfd-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  background: var(--pfd-paper);
+  color: var(--pfd-ink);
+  font-family: var(--pfd-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/* Owner direction, 14 Nov 2026: keep the app's dark blue scheme; take the layout and motion from the reference. */
+.dark .pfd,
+[data-theme="dark"] .pfd {
+  --pfd-paper-rgb: 7 12 27;
+  --pfd-panel-rgb: 11 18 36;
+  --pfd-ink-rgb: 255 255 255;
+}
+.dark .pfd::before,
+[data-theme="dark"] .pfd::before {
+  mix-blend-mode: screen;
+  opacity: 0.16;
+}
+/* Paper grain. */
+.pfd::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.pfd button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+#p4p-dictionary .pfd :focus-visible {
+  outline: 3px solid var(--pfd-ink);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.pfd-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* Stage and cloud */
+.pfd-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+.pfd-cloud {
+  position: absolute;
+  inset: 0;
+}
+.pfd-cloud canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+.pfd-cloud canvas:active {
+  cursor: grabbing;
+}
+.pfd-icon {
+  width: 48px;
+  height: 48px;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border: 1px solid var(--pfd-line-strong);
+  border-radius: 8px;
+  background: transparent;
+  padding: 0;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+button.pfd-icon:hover,
+button:hover > .pfd-icon {
+  background: var(--pfd-ink);
+  color: var(--pfd-paper);
+}
+.pfd-hint .touch {
+  display: none;
+}
+@media (pointer: coarse) {
+  .pfd-hint .mouse {
+    display: none;
+  }
+  .pfd-hint .touch {
+    display: inline;
+  }
+}
+
+/* The app styles headings and paragraphs globally, so text rules here carry the app root id to win. */
+/* Shared small label: tiny, bold, widely spaced capitals. */
+#p4p-dictionary .pfd-label {
+  margin: 0;
+  font-family: var(--pfd-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pfd-quiet);
+  line-height: 1.4;
+}
+
+/* Entry panel */
+.pfd-panel {
+  position: relative;
+  flex: none;
+  width: clamp(22rem, 33.4vw, 30rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--pfd-panel);
+  border-left: 1px solid var(--pfd-line);
+  animation: pfd-slide 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.pfd-panel-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 22px 28px 36px;
+  overscroll-behavior: contain;
+}
+.pfd-panel-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--pfd-line);
+}
+.pfd-panel-top .pfd-label {
+  flex: 1;
+  min-width: 0;
+}
+#p4p-dictionary .pfd-count {
+  margin: 0;
+  font-size: 14px;
+  color: var(--pfd-quiet);
+  white-space: nowrap;
+}
+.pfd-count strong {
+  font-size: 16px;
+  color: var(--pfd-ink);
+}
+#p4p-dictionary .pfd-panel h2 {
+  margin: 26px 0 18px;
+  font-family: var(--pfd-sans);
+  font-size: clamp(2.5rem, 4.4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  color: var(--pfd-ink);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  outline-offset: 6px;
+}
+#p4p-dictionary .pfd-lead {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--pfd-soft);
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+.pfd-panel section {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--pfd-line);
+}
+#p4p-dictionary .pfd-panel section > .pfd-label {
+  margin-bottom: 14px;
+}
+#p4p-dictionary .pfd-body {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--pfd-soft);
+  text-wrap: pretty;
+}
+.pfd-body a {
+  color: var(--pfd-ink);
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.pfd-body a:hover {
+  text-decoration-style: solid;
+}
+.pfd-heard {
+  display: grid;
+  gap: 8px;
+}
+#p4p-dictionary .pfd-heard p {
+  margin: 0;
+  max-width: 86%;
+  justify-self: start;
+  padding: 10px 14px;
+  border: 1px solid var(--pfd-line-strong);
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--pfd-ink);
+  text-wrap: pretty;
+}
+#p4p-dictionary .pfd-heard p.reply {
+  justify-self: end;
+  background: var(--pfd-ink);
+  border-color: var(--pfd-ink);
+  color: var(--pfd-panel);
+}
+#p4p-dictionary .pfd-avoid {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--pfd-soft);
+  text-wrap: pretty;
+}
+.pfd-connects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/* Related terms stay 48 px tall for touch but read quieter than the definition (owner review, 16 Nov 2026). */
+.pfd-connects {
+  gap: 6px;
+}
+.pfd-connects button {
+  min-height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--pfd-line);
+  border-radius: 8px;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--pfd-soft);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.pfd-connects button:hover {
+  background: var(--pfd-ink);
+  color: var(--pfd-panel);
+}
+.pfd-step {
+  flex: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--pfd-line);
+  background: var(--pfd-panel);
+}
+.pfd-step button {
+  min-width: 0;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+.pfd-step button + button {
+  border-left: 1px solid var(--pfd-line);
+  justify-content: flex-end;
+  text-align: right;
+}
+.pfd-step-text {
+  display: grid;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.25;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+#p4p-dictionary .pfd-step small {
+  font-family: var(--pfd-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pfd-quiet);
+}
+
+/* Term list (search) and About */
+.pfd-finder-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-top: 8px;
+  padding-bottom: 20px;
+  overscroll-behavior: contain;
+}
+.pfd-finder section {
+  margin-top: 18px;
+}
+.pfd-finder ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.pfd-finder li button {
+  width: 100%;
+  min-height: 48px;
+  display: grid;
+  gap: 2px;
+  padding: 10px 0;
+  border: 0;
+  border-top: 1px solid var(--pfd-line);
+  background: transparent;
+  text-align: left;
+}
+.pfd-finder li strong {
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+.pfd-finder li span {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--pfd-quiet);
+  text-wrap: pretty;
+}
+.pfd-finder li button:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Each new entry's parts rise into place one after another. */
+.pfd-swap > * {
+  animation: pfd-up 0.55s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+}
+.pfd-swap > :nth-child(2) {
+  animation-delay: 0.04s;
+}
+.pfd-swap > :nth-child(3) {
+  animation-delay: 0.09s;
+}
+.pfd-swap > :nth-child(4) {
+  animation-delay: 0.13s;
+}
+.pfd-swap > :nth-child(5) {
+  animation-delay: 0.18s;
+}
+.pfd-swap > :nth-child(6) {
+  animation-delay: 0.23s;
+}
+.pfd-swap > :nth-child(n + 7) {
+  animation-delay: 0.28s;
+}
+@keyframes pfd-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Opening title */
+.pfd-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  background: var(--pfd-paper);
+  text-align: center;
+  animation: pfd-intro 1.5s ease forwards;
+  pointer-events: none;
+}
+#p4p-dictionary .pfd-intro-title {
+  margin: 0;
+  font-family: var(--pfd-sans);
+  font-size: clamp(2.25rem, 6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+.pfd-intro-bar {
+  width: 160px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pfd-ink) 50%, var(--pfd-line) 50%);
+  background-size: 200% 100%;
+  animation: pfd-bar 1.2s ease forwards;
+}
+@keyframes pfd-intro {
+  0%,
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pfd-bar {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@keyframes pfd-slide {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Narrow screens: the cloud stays on top and the entry rises as a sheet beneath it. */
+@media (max-width: 52rem) {
+  .pfd {
+    flex-direction: column;
+  }
+  /* With a term open, the cloud keeps a strip at the top and the entry gets the rest of the screen. */
+  .pfd-open .pfd-stage {
+    flex: 0 0 clamp(170px, 30%, 260px);
+  }
+  .pfd-panel {
+    width: auto;
+    flex: 1 1 auto;
+    border-left: 0;
+    border-top: 1px solid var(--pfd-line);
+    animation-name: pfd-rise;
+  }
+  .pfd-panel-scroll {
+    padding: 12px max(18px, env(safe-area-inset-right)) 28px max(18px, env(safe-area-inset-left));
+  }
+  .pfd-panel-top {
+    padding-bottom: 10px;
+  }
+  #p4p-dictionary .pfd-panel h2 {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    line-height: 1;
+    margin: 16px 0 12px;
+  }
+  #p4p-dictionary .pfd-lead {
+    max-width: none;
+    font-size: 17px;
+  }
+  .pfd-panel section {
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+  .pfd-heard p {
+    max-width: 92%;
+  }
+  .pfd-step button {
+    padding: 8px 12px;
+    min-height: 60px;
+    gap: 8px;
+  }
+  .pfd-step {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+@keyframes pfd-rise {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pfd-panel,
+  .pfd-intro,
+  .pfd-intro-bar,
+  .pfd-swap > * {
+    animation: none;
+  }
+  .pfd-icon,
+  .pfd-connects button {
+    transition: none;
+  }
+}
+
+/* The command-center stylesheet forces the app typeface with !important; this page keeps its own. */
+#p4p-dictionary .pfd,
+#p4p-dictionary .pfd :is(h2, h3, p, button, input, small, strong, span, a, li, label) {
+  font-family: var(--pfd-sans) !important;
+}
+
+/* ---- Clean controls (owner direction, 14 Nov 2026): every control says what it does. ---- */
+.pfd-action {
+  position: absolute;
+  top: 20px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 1px solid var(--pfd-line-strong);
+  border-radius: 8px;
+  background: rgb(var(--pfd-panel-rgb) / 0.82);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.pfd-action:hover {
+  background: var(--pfd-ink);
+  color: var(--pfd-paper);
+}
+.pfd-at-search {
+  left: 20px;
+}
+.pfd-at-exit {
+  right: 20px;
+}
+#p4p-dictionary .pfd-wordmark {
+  position: absolute;
+  left: 24px;
+  bottom: 20px;
+  margin: 0;
+  font-size: 14px;
+  color: var(--pfd-soft);
+  white-space: nowrap;
+  pointer-events: none;
+}
+#p4p-dictionary .pfd .pfd-wordmark strong {
+  font-family: var(--pfd-mono) !important;
+  color: var(--pfd-ink);
+  letter-spacing: 0.02em;
+}
+#p4p-dictionary .pfd-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 12px 18px;
+  border: 1px solid var(--pfd-line);
+  border-radius: 8px;
+  background: rgb(var(--pfd-panel-rgb) / 0.9);
+  color: var(--pfd-ink);
+  font-size: 16px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+#p4p-dictionary .pfd-source {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--pfd-quiet);
+  text-wrap: pretty;
+}
+
+/* Search: a full-height drawer on wide screens, the whole screen on narrow ones. Never squeezed. */
+.pfd-finder {
+  position: absolute;
+  z-index: 6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(28rem, 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px 0;
+  background: var(--pfd-panel);
+  border-right: 1px solid var(--pfd-line-strong);
+  animation: pfd-drawer 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.pfd-finder-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+#p4p-dictionary .pfd-finder-top h2 {
+  margin: 0;
+  font-family: var(--pfd-sans);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--pfd-ink);
+}
+.pfd-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 0 14px;
+  border: 1px solid var(--pfd-line-strong);
+  border-radius: 8px;
+  background: var(--pfd-paper);
+  color: var(--pfd-quiet);
+}
+.pfd-search:focus-within {
+  border-color: var(--pfd-ink);
+  box-shadow: 0 0 0 2px var(--pfd-ink);
+}
+#p4p-dictionary .pfd-search input {
+  flex: 1;
+  min-width: 0;
+  min-height: 52px;
+  border: 0;
+  background: transparent;
+  color: var(--pfd-ink);
+  font-size: 17px;
+}
+/* The field's own border thickens on focus, so the inner input does not draw a second ring. */
+#p4p-dictionary .pfd .pfd-search input:focus-visible {
+  outline: 0;
+}
+.pfd-search input::placeholder {
+  color: var(--pfd-quiet);
+  opacity: 1;
+}
+#p4p-dictionary .pfd-found {
+  margin: 12px 0 0;
+  font-size: 15px;
+  color: var(--pfd-soft);
+}
+@keyframes pfd-drawer {
+  from {
+    transform: translateX(-24px);
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 52rem) {
+  /* Phones: the two page buttons shrink to 48 px icons so they stop covering the cloud. Their names stay for screen readers. */
+  .pfd-action {
+    top: max(10px, env(safe-area-inset-top));
+    width: 48px;
+    padding: 0;
+    justify-content: center;
+  }
+  .pfd-action-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .pfd-at-search {
+    left: max(10px, env(safe-area-inset-left));
+  }
+  .pfd-at-exit {
+    right: max(10px, env(safe-area-inset-right));
+  }
+  .pfd-wordmark {
+    display: none;
+  }
+  #p4p-dictionary .pfd-hint {
+    bottom: 20px;
+    font-size: 15px;
+  }
+  .pfd-finder {
+    width: 100%;
+    border-right: 0;
+    padding: 16px 20px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pfd-finder {
+    animation: none;
+  }
+  .pfd-action {
+    transition: none;
+  }
+}
+/* People who ask for stronger contrast get solid lines and fully opaque secondary text. */
+@media (prefers-contrast: more) {
+  .pfd {
+    --pfd-soft: var(--pfd-ink);
+    --pfd-quiet: var(--pfd-ink);
+    --pfd-line: rgb(var(--pfd-ink-rgb) / 0.6);
+    --pfd-line-strong: var(--pfd-ink);
+  }
+}
+
+/* Phones turned sideways: too short to stack, so the cloud and the entry sit side by side. */
+@media (max-width: 52rem) and (max-height: 30rem) and (orientation: landscape) {
+  .pfd {
+    flex-direction: row;
+  }
+  .pfd-open .pfd-stage {
+    flex: 1 1 auto;
+  }
+  .pfd-panel {
+    flex: 0 0 58%;
+    border-top: 0;
+    border-left: 1px solid var(--pfd-line);
+    animation-name: pfd-slide;
+  }
+  #p4p-dictionary .pfd-panel h2 {
+    font-size: 1.9rem;
+    margin: 10px 0 8px;
+  }
+  .pfd-step button {
+    min-height: 52px;
+  }
+}
+
+/* Fewer boxes (owner review, 16 Nov 2026): the close and previous/next icons keep their 48 px target
+   but lose the outline; they fill on hover and show the focus ring from the keyboard. */
+.pfd-panel-top .pfd-icon,
+.pfd-step .pfd-icon {
+  border-color: transparent;
+}
+.pfd-step button:hover > .pfd-icon {
+  border-color: var(--pfd-ink);
+}
+/* A thin scrollbar in the page colours instead of the system one with arrows. */
+.pfd-panel-scroll,
+.pfd-finder-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--pfd-line-strong) transparent;
+}
+@media (prefers-contrast: more) {
+  .pfd-panel-top .pfd-icon,
+  .pfd-step .pfd-icon,
+  .pfd-connects button {
+    border-color: var(--pfd-ink);
+  }
+}
+
+/* The section name on an entry opens the search on that section (owner request, 16 Nov 2026: keep improving). */
+.pfd-group-link {
+  min-height: 48px;
+  margin: -12px 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+.pfd-group-link:hover {
+  color: var(--pfd-ink);
+  text-decoration-color: currentColor;
+}
+/* Section filter in the search: one row that scrolls sideways, 8 px corners, 48 px tall for touch. */
+.pfd-sections {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pfd-line-strong) transparent;
+  padding-bottom: 4px;
+}
+#p4p-dictionary .pfd-sections button {
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--pfd-line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--pfd-soft);
+  font-family: var(--pfd-sans);
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  cursor: pointer;
+}
+#p4p-dictionary .pfd-sections button:hover {
+  border-color: var(--pfd-ink);
+  color: var(--pfd-ink);
+}
+#p4p-dictionary .pfd-sections button[aria-pressed="true"] {
+  background: var(--pfd-ink);
+  border-color: var(--pfd-ink);
+  color: var(--pfd-paper);
+  font-weight: 600;
+}
+@media (prefers-contrast: more) {
+  #p4p-dictionary .pfd-sections button {
+    border-color: var(--pfd-ink);
+  }
+}
+
+/* Semantic elements used for the section filter and status lines. */
+.pfd-sections {
+  border: 0;
+  margin-inline: 0;
+  min-width: 0;
+  padding-inline: 0;
+  padding-top: 0;
+}
+.pfd-found,
+.pfd-hint {
+  display: block;
+}

@@ -25,7 +25,7 @@ export async function seoRoutes(): Promise<SeoRoute[]> {
     ...actionRouteSlugs,
     ...caseStudies.map((item) => item.slug),
   ];
-  return publishedPortfolioLanguages.flatMap((language) =>
+  const localized = publishedPortfolioLanguages.flatMap((language) =>
     slugs.map((slug) => ({
       path: portfolioHref(language, slug ? `/${slug}` : ''),
       priority: slug ? 0.7 : 0.9,
@@ -39,4 +39,6 @@ export async function seoRoutes(): Promise<SeoRoute[]> {
       },
     })),
   );
+  // The P4P Parafencing Dictionary is published in English only.
+  return [...localized, { path: '/p4p/dictionary', priority: 0.7 }];
 }
