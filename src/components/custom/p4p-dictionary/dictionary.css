@@ -845,3 +845,13 @@ button:hover > .pfd-icon {
 .pfd-hint {
   display: block;
 }
+
+/* Running text avoids one-word last lines (Bulachak web QA gate, WEB-QA-08). */
+.pfd-lead,
+.pfd-body,
+.pfd-heard p,
+.pfd-avoid,
+.pfd-source,
+.pfd-finder li span {
+  text-wrap: pretty;
+}

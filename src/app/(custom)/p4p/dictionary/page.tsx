@@ -12,7 +12,38 @@ export const metadata: Metadata = {
   title: 'Parafencing Dictionary · P4P',
   description,
   alternates: { canonical: '/p4p/dictionary' },
-  openGraph: { title: 'P4P Parafencing Dictionary', description, url: '/p4p/dictionary' },
+  icons: {
+    apple: [{ url: '/p4p-dictionary/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  openGraph: {
+    type: 'website',
+    title: 'P4P Parafencing Dictionary',
+    description,
+    url: '/p4p/dictionary',
+    images: [
+      {
+        url: '/p4p-dictionary/p4p-dictionary-og.jpg',
+        width: 1200,
+        height: 630,
+        type: 'image/jpeg',
+        alt: 'P4P Parafencing Dictionary',
+      },
+      {
+        url: '/p4p-dictionary/p4p-dictionary-og-sq.jpg',
+        width: 800,
+        height: 800,
+        type: 'image/jpeg',
+        alt: 'P4P Parafencing Dictionary',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'P4P Parafencing Dictionary',
+    description,
+    images: ['/p4p-dictionary/p4p-dictionary-og.jpg'],
+  },
+  other: { thumbnail: 'https://bulachak.com/p4p-dictionary/p4p-dictionary-og-sq.jpg' },
 };
 
 export default function P4PDictionaryRoute() {

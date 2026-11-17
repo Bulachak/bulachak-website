@@ -7,6 +7,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { parseDictionary } from './dictionary-model';
 import DictionaryView from './dictionary-view';
 
+// Binds the last two words so no line ends on a single word.
+const keepLastTwo = (value: string) => value.replace(/ (?=\S+$)/, ' ');
 const readTerm = () => decodeURIComponent(window.location.hash.replace(/^#/, ''));
 
 export function DictionaryPage({ files }: { files: { name: string; raw: string }[] }) {
@@ -36,8 +38,8 @@ export function DictionaryPage({ files }: { files: { name: string; raw: string }
     return (
       <main className="portfolio-container py-16">
         <h1 className="text-3xl font-semibold">P4P Parafencing Dictionary</h1>
-        <p className="mt-4 max-w-2xl">
-          {dictionary.entries.length} terms of wheelchair fencing, each with its source.
+        <p className="mt-4 max-w-2xl text-pretty">
+          {dictionary.entries.length} terms of wheelchair fencing, each with its&nbsp;source.
         </p>
         {dictionary.groups.map((group) => (
           <section key={group} className="mt-10">
@@ -48,7 +50,7 @@ export function DictionaryPage({ files }: { files: { name: string; raw: string }
                 .map((entry) => (
                   <div key={entry.id} id={entry.id}>
                     <dt className="font-semibold">{entry.term}</dt>
-                    <dd>{entry.short}</dd>
+                    <dd className="text-pretty">{keepLastTwo(entry.short)}</dd>
                   </div>
                 ))}
             </dl>
